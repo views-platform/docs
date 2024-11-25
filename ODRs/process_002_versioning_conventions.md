@@ -27,10 +27,7 @@ The versioning format `x.y.z` will be used, where:
 * `x` (Major): Incremented for incompatible API changes.
 * `y` (Minor): Incremented for backward-compatible functionality.
 * `z` (Patch): Incremented for backward-compatible bug fixes.
-
-### Overview
-*Summarize the decision clearly and concisely.*
-
+  
 ---
 
 ## Consequences
