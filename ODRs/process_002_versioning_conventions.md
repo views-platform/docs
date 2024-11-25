@@ -55,15 +55,15 @@ Semantic Versioning is a prevalent standard that offers a straightforward and sy
 ## Additional Notes
 **Semantic Versioning (SemVer)** is a versioning scheme that uses a three-part version number: `MAJOR.MINOR.PATCH`
 
-**MAJOR Version**
+**MAJOR Version** 
 - **Purpose**: Indicates incompatible API changes.
 - **Increment When**: There are changes that break backward compatibility. This could include removing or altering existing functionality in a way that existing users would need to modify their code to accommodate the changes.
 - **Example**: If the current version is 1.4.3 and a breaking change is introduced, the new version would be 2.0.0.
 
-**MINOR Version**
-**Purpose**: Indicates the addition of new functionality in a backward-compatible manner.
-**Increment When**: New features or significant improvements are added that do not break existing functionality. This allows users to upgrade without fear of their existing code breaking.
-**Example**: If the current version is 1.4.3 and a new feature is added, the new version would be 1.5.0.
+**MINOR Version**   
+- **Purpose**: Indicates the addition of new functionality in a backward-compatible manner.
+- **Increment When**: New features or significant improvements are added that do not break existing functionality. This allows users to upgrade without fear of their existing code breaking.
+- **Example**: If the current version is 1.4.3 and a new feature is added, the new version would be 1.5.0.
 
 **PATCH Version**
 - **Purpose**: Indicates backward-compatible bug fixes.
