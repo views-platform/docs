@@ -20,7 +20,7 @@
 ---
 
 ## Decision
-The project will adopt the Semantic Versioning (SemVer) convention, using the format x.x.x.
+All projects and packages inside the views-platform organization (e.g `views-platform-core` and `views-stepshifter`) will adopt the Semantic Versioning (SemVer) convention, using the format x.x.x.
 
 The versioning format `x.y.z` will be used, where:
 
