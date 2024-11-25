@@ -6,7 +6,7 @@ This index provides an overview of all **Organizational Decision Records (ODRs)*
 [infra_001_repository_naming_conventions](/ODRs/infra_001_repository_naming_conventions.md)
 
 ## Process Decisions
-...
+[process_002_versioning_conventions.md](/ODRs/process_002_versioning_conventions.md)
 
 ## Data Decisions
 ...
