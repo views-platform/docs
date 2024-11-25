@@ -20,7 +20,7 @@
 ---
 
 ## Decision
-All projects and packages inside the `views-platform` organization (e.g `views-pipeline-core` and `views-stepshifter`) will adopt the Semantic Versioning (SemVer) convention.
+All projects and packages inside the `views-platform` organization (e.g `views-pipeline-core` and `views-stepshifter`) will adopt the Semantic Versioning (SemVer) convention. You should do this by updating the pyproject.toml file for your respective package before submitting a release.
 
 The versioning format `x.y.z` will be used, where:
 
