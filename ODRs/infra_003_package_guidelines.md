@@ -26,6 +26,7 @@ All Python packages developed within the VIEWS organization will follow these gu
 2. **Poetry for Dependency Management**: Use [Poetry](https://python-poetry.org/docs/) to manage dependencies and build the package.
 3. **GitHub Workflows for CI/CD**: Implement [GitHub actions](https://docs.github.com/en/actions) to automate [testing](https://docs.pytest.org/en/stable/), [building](https://packaging.python.org/en/latest/tutorials/packaging-projects/), and [publishing](https://python-poetry.org/docs/libraries/) of packages.
 4. **Gitignores**: Ensure your project has a .gitignore file to exclude unnecessary files from version control.
+5. **Versioning**: See [this ODR](https://github.com/views-platform/docs/blob/main/ODRs/process_002_versioning_conventions.md) for VIEWS specific guidelines for package versioning.
 
 ### Overview
 
