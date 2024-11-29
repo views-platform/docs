@@ -19,10 +19,10 @@ To streamline Python package production and distribution throughout the VIEWS or
 ---
 
 ## Decision
-All Python packages developed within the VIEWS organization will follow these guidelines for creating and publishing packages to PyPI using Poetry and GitHub Workflows. Package names should follow the format `views_{packagename}`.
+All Python packages developed within the VIEWS organization will follow these guidelines for creating and publishing packages to PyPI using Poetry and GitHub Workflows. Package names should follow the format `views-{packagename}`.
 
 **Overview**
-1. **Package Naming**: All packages must be named using the format `views_{packagename}` See [the ODR for naming conventions](https://github.com/views-platform/docs/blob/main/ODRs/infra_001_repository_naming_conventions.md) for more information.
+1. **Package Naming**: All packages and package repositories must be named using the format `views-{packagename}`. PyPI will interpret this as `views_{packagename}`. See [the ODR for naming conventions](https://github.com/views-platform/docs/blob/main/ODRs/infra_001_repository_naming_conventions.md) for more information.
 2. **Poetry for Dependency Management**: Use [Poetry](https://python-poetry.org/docs/) to manage dependencies and build the package.
 3. **GitHub Workflows for CI/CD**: Implement [GitHub actions](https://docs.github.com/en/actions) to automate [testing](https://docs.pytest.org/en/stable/), [building](https://packaging.python.org/en/latest/tutorials/packaging-projects/), and [publishing](https://python-poetry.org/docs/libraries/) of packages.
 4. **Gitignores**: Ensure your project has a .gitignore file to exclude unnecessary files from version control.
