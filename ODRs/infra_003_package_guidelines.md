@@ -6,9 +6,9 @@
 | ODR Number         | 003             |
 | Status             | Proposed |
 | Category           | Infra |
-| Author             | Moo            |
+| Author             | Dylan            |
 | Date               | 29.11.2024        |
-| Owner              | Moo    |
+| Owner              | Dylan    |
 | Review Date        | [Insert Last Review Date (DD.MM.YYYY)] |
 
 
