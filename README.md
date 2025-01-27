@@ -11,7 +11,12 @@ What You'll Find Here:
 - [Best Practices:](./Best%20Practices/) In-depth documentation for workflows, version control, CI/CD processes, and other operational guidelines to ensure smooth and efficient collaboration.
 - [FAQs and Glossary:](./FAQ%20&%20Glossary/) Answers to common questions and a glossary of terms to help new and experienced members alike navigate VIEWS terminology.
 
-If you are interested in in-depth documentation of each of the views-platform repositories, along with their components, please see the individual repository-specific README files. 
+If you are interested in in-depth documentation of each of the views-platform repositories, along with their components, please see the individual repository-specific README files:
+- Pipeline execution:[views-pipeline-core](https://github.com/views-platform/views-pipeline-core/blob/main/README.md)
+- About the VIEWS models:[views-models](https://github.com/views-platform/views-models/blob/main/README.md)
+- About VIEWS stepshifter:[views-stephifter](https://github.com/views-platform/views-stepshifter/blob/main/README.md)
+- About VIEWS HydraNet:[views-hydranet](https://github.com/views-platform/views-hydranet/blob/main/README.md)
+- Forecast evaluation:[views-evaluation](https://github.com/views-platform/views-evaluation/blob/main/README.md)
 
 
 *This repository is regularly updated to reflect evolving organizational needs and best practices. Contributions and feedback are welcome!*
