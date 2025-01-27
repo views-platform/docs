@@ -1,4 +1,4 @@
-# docs:
+# Docs:
 
 Welcome to the docs repository! This repository serves as the single source of truth for all documentation and resources needed to collaborate effectively within the VIEWS organization. Whether you're onboarding, contributing to a project, or seeking guidance on workflows and standards, this is the place to start.
 What You'll Find Here:
@@ -8,7 +8,11 @@ What You'll Find Here:
 - [Contribution Guides:](./Contribution%20Guides/) Step-by-step instructions for contributing to VIEWS repositories, including pull request guidelines, review processes, and coding standards.
 - [Onboarding Resources:](./Onboarding%20Resources/) Essential tools and instructions to help new team members get started quickly and efficiently.
 - [Templates:](./Templates/) Ready-to-use templates for pull requests, issue creation, and decision records to standardize collaboration across teams.
-- Best Practices: In-depth documentation for workflows, version control, CI/CD processes, and other operational guidelines to ensure smooth and efficient collaboration.
+- [Best Practices:](./Best%20Practices/) In-depth documentation for workflows, version control, CI/CD processes, and other operational guidelines to ensure smooth and efficient collaboration.
 - [FAQs and Glossary:](./FAQ%20&%20Glossary/) Answers to common questions and a glossary of terms to help new and experienced members alike navigate VIEWS terminology.
 
+If you are interested in in-depth documentation of each of the views-platform repositories, along with their components, please see the individual repository-specific README files. 
+
+
 *This repository is regularly updated to reflect evolving organizational needs and best practices. Contributions and feedback are welcome!*
+

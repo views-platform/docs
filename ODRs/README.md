@@ -31,7 +31,7 @@ ODRs are named using a category-prefix and sequential numbering for easy navigat
 
 To propose a new ODR:
 1. **Create a Branch**: Fork the repository and create a branch for your ODR.
-2. **Draft the ODR**: Use the [ODR Template](template.md) in this folder.
+2. **Draft the ODR**: Use the [ODR Template](/Templates/odr_template.md) in this folder.
 3. **Submit a Pull Request**: Open a pull request with your proposed ODR and participate in the review process.
 4. **Collaborate**: Address feedback and finalize the ODR for inclusion.
 
