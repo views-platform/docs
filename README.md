@@ -4,7 +4,8 @@
   <img src="https://pbs.twimg.com/profile_banners/1237000633896652800/1717069203/1500x500" alt="VIEWS Twitter Header" style="position: absolute; top: -50px; width: 100%; height: auto;">
 </div>
 
-Welcome to the docs repository! This repository serves as the single source of truth for all documentation and resources needed to collaborate effectively within the VIEWS organization. Whether you're onboarding, contributing to a project, or seeking guidance on workflows and standards, this is the place to start.
+
+This repository serves as the single source of truth for all documentation and resources needed to collaborate effectively within the VIEWS organization. Whether you're onboarding, contributing to a project, or seeking guidance on workflows and standards, this is the place to start.
 What You'll Find Here:
 
 - [Organizational Standards:](./Organizational%20Guides/) Comprehensive guidelines for coding practices, repository naming conventions, branch management, and project workflows.
