@@ -6,7 +6,7 @@
 
 This repository serves as the single source of truth for all documentation and resources needed to collaborate effectively within the VIEWS organization. Whether you're onboarding, contributing to a project, or seeking guidance on workflows and standards, this is the place to start.
 
-What You'll Find Here:
+What you will find here:
 
 - [Organizational Standards:](./Organizational%20Guides/) Comprehensive guidelines for coding practices, repository naming conventions, branch management, and project workflows.
 - [Organizational Decision Records (ODRs):](./ODRs/) A living record of key decisions shaping the structure, processes, and operations of the VIEWS organization. These ensure transparency and consistency across projects.
@@ -25,4 +25,12 @@ If you are interested in in-depth documentation of each of the views-platform re
 
 
 *This repository is regularly updated to reflect evolving organizational needs and best practices. Contributions and feedback are welcome!*
+
+
+## Funding and Partners 
+
+<div style="width: 100%; max-width: 1500px; height: 400px; overflow: hidden; position: relative; margin-top: 50px;">
+  <img src="image.png" alt="Funder logos" style="position: absolute; top: -50px; width: 100%; height: auto;">
+</div>
+
 
