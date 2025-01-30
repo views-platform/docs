@@ -27,10 +27,13 @@ If you are interested in in-depth documentation of each of the views-platform re
 *This repository is regularly updated to reflect evolving organizational needs and best practices. Contributions and feedback are welcome!*
 
 
-## Funding and Partners 
+## Acknowledgements  
 
-<div style="width: 100%; max-width: 1500px; height: 400px; overflow: hidden; position: relative; margin-top: 50px;">
-  <img src="image.png" alt="Funder logos" style="position: absolute; top: -50px; width: 100%; height: auto;">
-</div>
+<p align="center">
+  <img src="https://raw.githubusercontent.com/views-platform/docs/main/images/views_funders.png" alt="Views Funders" width="80%">
+</p>
+
+
+Special thanks to the **VIEWS MD&D Team** for their collaboration and support.  
 
 
