@@ -147,12 +147,9 @@ This project is licensed under the [LICENSE](/LICENSE) file.
 
 ## 💬 Acknowledgements  
 
-This project builds upon:  
-
-- [UCDP Georeferenced Event Dataset (GED)](https://ucdp.uu.se/)  
-- [PRIO Grid](https://grid.prio.org/#/)  
-- Concepts from [relevant references or research papers].  
-- Funding from [insert funding organizations].  
+<p align="center">
+  <img src="https://raw.githubusercontent.com/views-platform/docs/main/images/views_funders.png" alt="Views Funders" width="80%">
+</p>
 
 Special thanks to the **VIEWS MD&D Team** for their collaboration and support.  
 
