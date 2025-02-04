@@ -6,6 +6,36 @@
 | By author    | Simon    |
 
 
+This glossary provides an overview of the core terms used throughout the VIEWS ML pipeline. It contains definitions of all the relevant terms along with potential VIEWS adapted terminology and explanations. 
+
+--- 
+
+## Table of Contents
+
+- [Key Technical Terms](#key-technical-terms)
+  - [Config File](#config-file)
+  - [Hyperparameters](#hyperparameters)
+  - [Sweep](#sweep)
+  - [Weights & Biases (wandb)](#weights--biases-wandb)
+  - [Utils/Utility Functions](#utilsutility-functions)
+- [Key Forecasting Terms](#key-forecasting-terms)
+  - [forecast_step](#forecast_step)
+  - [month_id](#month_id)
+  - [year](#year)
+  - [forecast_start](#forecast_start)
+  - [forecast_end](#forecast_end)
+  - [forecast_horizon](#forecast_horizon)
+  - [forecast_lead_time](#forecast_lead-time)
+- [Model Terminology](#model-terminology)
+  - [Recursive Multi-Step Forecasting](#1-recursive-multi-step-forecasting)
+  - [Direct Multi-Step Forecasting (stepshifter in views terms)](#2-direct-multi-step-forecasting-stepshifter-in-views-terms)
+  - [Autoregressive Model (AR)](#3-autoregressive-model-ar)
+  - [Multi-Output Models](#4-multi-output-models)
+- [Summary Table for Model Terminology](#summary-table-for-model-terminology)
+
+---
+
+
 ## Key Technical Terms
 
 ### Config File
@@ -18,18 +48,10 @@ Each model is specified with config files for:
 4. Hyperparameter sweeps - contains the configuration for hyperparameter sweeps using Weights & Biases.
 5. Deployment configs - These scripts define the deployment configuration settings for the application, including the deployment status and any additional settings specified.
 
-### Orchestration
-The Prefect Flow coordinates the execution of tasks, ensuring that they are executed in the correct order based on their dependencies.
-
 ### Hyperparameters
 Hyperparameters are parameters or settings that are not directly learned from data during the training process of a machine learning model, but rather are set prior to training and influence the behavior and performance of the model. For example, hyperparameters could include the learning rate, number of estimators, number of jobs, and transformation of data.
 
 For more information, see the [Weights & Biases article "Intro to MLOps: Hyperparameter Tuning"](https://wandb.ai/site/articles/intro-to-mlops-hyperparameter-tuning).
-
-### Prefect
-Prefect is used for workflow orchestration, defining the sequence of tasks (task1, task2, task3) and their dependencies.
-
-See the Quickstart guide [here](https://docs.prefect.io/latest/getting-started/quickstart/).
 
 ### Sweep
 A sweep configuration is a set of specifications defining how hyperparameters should be explored during a hyperparameter search, the hyperparameters to be tuned, and their respective ranges or values to be tried. 
