@@ -11,6 +11,13 @@
 ### Config File
 Config files specify the settings and hyperparameters used to train machine learning models, allowing for easy experimentation and optimization without modifying the code – i.e., you don't want to hard code (i.e., write directly) hyperparameters into your model code.
 
+Each model is specified with config files for:
+1. Meta configs - contains the meta data for the model (model algorithm, name, target variable, and level of analysis).
+2. Model hyperparameters - contains the hyperparameter configurations for model training.
+3. Model [queryset](https://github.com/prio-data/viewser?tab=readme-ov-file#via-api) - contains the configuration for the input data in the form of a viewser queryset. That is the data from viewser that is used to train the model.
+4. Hyperparameter sweeps - contains the configuration for hyperparameter sweeps using Weights & Biases.
+5. Deployment configs - These scripts define the deployment configuration settings for the application, including the deployment status and any additional settings specified.
+
 ### Orchestration
 The Prefect Flow coordinates the execution of tasks, ensuring that they are executed in the correct order based on their dependencies.
 
