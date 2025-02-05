@@ -1,12 +1,13 @@
 # Glossary
 
+This glossary provides an overview of the core terms used throughout the VIEWS ML pipeline. It contains definitions of all the relevant terms along with potential VIEWS adapted terminology and explanations. 
+
+
 | Info         | Details  |
 |--------------|----------|
 | Last updated | 30 .07.2024 |
 | By author    | Simon    |
 
-
-This glossary provides an overview of the core terms used throughout the VIEWS ML pipeline. It contains definitions of all the relevant terms along with potential VIEWS adapted terminology and explanations. 
 
 --- 
 
@@ -17,7 +18,6 @@ This glossary provides an overview of the core terms used throughout the VIEWS M
   - [Hyperparameters](#hyperparameters)
   - [Sweep](#sweep)
   - [Weights & Biases (wandb)](#weights--biases-wandb)
-  - [Utils/Utility Functions](#utilsutility-functions)
 - [Key Forecasting Terms](#key-forecasting-terms)
   - [forecast_step](#forecast_step)
   - [month_id](#month_id)
@@ -57,12 +57,11 @@ For more information, see the [Weights & Biases article "Intro to MLOps: Hyperpa
 A sweep configuration is a set of specifications defining how hyperparameters should be explored during a hyperparameter search, the hyperparameters to be tuned, and their respective ranges or values to be tried. 
 
 ### Weights & Biases (wandb)
-Weights & Biases (W&B) is used to log relevant information (such as data, transformations, and results) produced by each task during the execution of the workflow. W&B logging within each task enables tracking and monitoring of the workflow's progress and outputs, enhancing visibility and reproducibility.
+Weights & Biases (W&B) is used to log relevant information (such as data, transformations, and results) produced by each task during the execution of the workflow. W&B logging within each task enables tracking and monitoring of the workflow's progress and outputs, enhancing visibility and reproducibility. To see how we integrate different utilities for tracking model performances on W&B, refer to the [views-pipeline-core documentation](https://github.com/views-platform/views-pipeline-core?tab=readme-ov-file#utils-for-weights--biases)
 
-See the Quickstart guide [here](https://docs.wandb.ai/quickstart).
+See the Quickstart guide for Weights & Biases [here](https://docs.wandb.ai/quickstart).
 
-### Utils/Utility Functions
-Collection of functions or tools that serve various general purposes and are commonly reused across different parts of a software project. These utility functions are often not specific to any particular domain or task but rather provide common functionalities that can be helpful in many different situations.
+---
 
 ## Key Forecasting Terms
 
@@ -94,7 +93,13 @@ Collection of functions or tools that serve various general purposes and are com
 - **Definition**: The duration between when a forecast is made and when the predicted event occurs.
 - **Example**: A forecast made in January 2021 for the month of March 2021 has a forecast lead time of 2 months.
 
+---
+
 ## Model Terminology
+
+
+
+NOTE: AR is part of the multistep, any of the models can be single or multiple output 
 
 ### 1. Recursive Multi-Step Forecasting
 - **Definition**: A single model trained to predict one step ahead, used iteratively to forecast multiple future steps.
