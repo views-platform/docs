@@ -18,13 +18,13 @@ The Views Platform comprises several specialized repositories:
 
 - **[views-evaluation](https://github.com/views-platform/views-evaluation)**: Focuses on the evaluation metrics and analysis of model outputs.
 
-For more information on the individual contents of the repositories, please see the repository README files. 
+For more information on the individual contents of the repositories, please see the repository `README.md` files. 
 
 ## 2. Getting Started
 
 **Step 1: Familiarize Yourself with the Documentation**
 
-Begin by exploring the [docs](https://github.com/views-platform/docs) repository. This will provide you with an understanding of the organizational standards and decision records that guide our projects. Pay attention to the Organizational Decision Records (ODRs) to grasp the rationale behind key decisions.
+Begin by exploring the [docs](https://github.com/views-platform/docs) repository. This will provide you with an understanding of the organizational standards and decision records that guide our projects. Here you can also find the [Glossary](../FAQ%20&%20Glossary/glossary.md) containing all the relevant terminology for navigating through our material. Pay attention to the Organizational Decision Records (ODRs) to grasp the rationale behind key decisions.
 
 **Step 2: Set Up the Development Environment**
 
