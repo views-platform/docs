@@ -1,10 +1,10 @@
-# Views Platform Onboarding Guide
+# VIEWS Platform Onboarding Guide
 
 Welcome to the Views Platform! This guide is designed to help you navigate our repositories and utilize the available resources effectively.
 
 ## 1. Overview of Repositories
 
-The Views Platform comprises several specialized repositories:
+The VIEWS Platform comprises several specialized repositories:
 
 - **[docs](https://github.com/views-platform/docs)**: This centralized documentation repository serves as the single source of truth for organizational standards, Organizational Decision Records (ODRs), workflows, guides, and best practices, ensuring clarity and consistency across all projects and repositories.
 
@@ -24,7 +24,7 @@ For more information on the individual contents of the repositories, please see 
 
 **Step 1: Familiarize Yourself with the Documentation**
 
-Begin by exploring the [docs](https://github.com/views-platform/docs) repository. This will provide you with an understanding of the organizational standards and decision records that guide our projects. Here you can also find the [Glossary](../FAQ%20&%20Glossary/glossary.md) containing all the relevant terminology for navigating through our material. Pay attention to the Organizational Decision Records (ODRs) to grasp the rationale behind key decisions.
+Begin by exploring the [docs](https://github.com/views-platform/docs) repository. This will provide you with an understanding of the organizational standards and decision records that guide our projects. Here you can also find the [Glossary](../FAQ%20&%20Glossary/glossary.md) containing all the relevant terminology for navigating through our material. Pay attention to the Organizational Decision Records (ODRs) to grasp the rationale behind key decisions. You can also find the [Contribution Guides](/Contribution%20Guides/README.md) for details on how to make your first contribution.
 
 **Step 2: Set Up the Development Environment**
 
@@ -45,6 +45,15 @@ Depending on your area of interest, delve into the other repositories:
 **Step 4: Review the Code of Conduct and Contributing Guidelines**
 
 Ensure you read through the organization's Code of Conduct and Contributing Guidelines, found in the `docs` repo. This will help you understand the expectations and processes for contributing to the projects.
+
+**Step 5: Always consult the Glossary**
+
+Use the terms defined in the Glossary in your code and documentation. Consistent terminology helps avoid misunderstandings and makes the codebase easier to navigate.
+
+**Step 6: Revisit the ODRs if you encounter any uncertainties.** 
+
+They are the authoritative source for understanding the crucial decisions made in the project. **This project runs on the philosophy of "if you can't answer it with a link, it is not documented."** As such, all decisions regarding the organization or pipeline architecture should be properly documented with an ODR.
+
 
 ## 3. Additional Resources
 
