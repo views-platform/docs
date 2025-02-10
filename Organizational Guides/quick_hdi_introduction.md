@@ -1,3 +1,4 @@
+
 # **Internal Discussion Document: Highest Density Intervals (HDI)**
 
 **Prepared for:** VIEWS DataLab (MD&D+Infra)  
@@ -12,7 +13,10 @@
 4. [Detailed Example: Skewed or Zero-Inflated Data](#detailed-example-skewed-or-zero-inflated-data)  
 5. [Multiple Modes: Handling Rare Bimodality](#multiple-modes-handling-rare-bimodality)  
 6. [How to Compute an HDI (in Python)](#how-to-compute-an-hdi-in-python)  
+   - [Posterior vs. Predictive Distributions](#posterior-vs-predictive-distributions)  
+   - [Code Snippet: A Quick Demonstration](#code-snippet-a-quick-demonstration)  
 7. [Practical Tips & Tail-End Uncertainty](#practical-tips--tail-end-uncertainty)  
+   - [Data Storage & Sharing](#data-storage--sharing)  
 8. [Common Pitfalls & Misunderstandings](#common-pitfalls--misunderstandings)  
 9. [Conclusion & Next Steps](#conclusion--next-steps)  
 10. [References & Further Reading](#references--further-reading)
@@ -27,7 +31,7 @@ This document aims to:
 - Compare HDIs to percentile-based intervals (e.g., 5th, 25th, 50th, 75th, 95th).
 - Show how HDIs can **reduce data volume** needed for sharing forecast uncertainty (instead of sending thousands of samples).
 - Address **zero-inflated** and **tail-focused** scenarios common in our work.
-- Emphasize **Python workflows** (e.g., `ArviZ`, `PyMC`).
+- Emphasize **Python workflows** (e.g., `ArviZ`, `PyMC`), with **hands-on examples**.
 
 We encourage team members to review, discuss, and decide how best to apply HDIs in ongoing projects.
 
@@ -61,7 +65,7 @@ By focusing on *density*, HDIs naturally highlight **where the distribution is m
    - HDIs explicitly show that 0 is part of the densest region, if relevant.
 
 3. **Practical Summaries**  
-   - Instead of sending 10k samples to end users, you can send a three HDIs (e.g. 50%, 95%, 99% HDI), giving a clear, concise representation of likely outcomes.
+   - Instead of sending 10k samples to end users, you can send a couple of HDIs (e.g. 50%, 95%, 99% HDI), giving a clear, concise representation of likely outcomes.
 
 4. **Flexibility for Tail Analysis**  
    - If you need more coverage on rare events, you can adjust the interval coverage (e.g., 99.99% HDI) or complement HDIs with explicit tail probabilities.
@@ -105,11 +109,11 @@ While zero-inflation is common, multi-modal distributions are less frequent but 
 ## How to Compute an HDI (in Python)
 
 1. **Obtain Posterior Samples**  
-   - Typically via MCMC in PyMC or another Bayesian framework.
+   - Typically via MCMC in [PyMC](https://www.pymc.io/) or another Bayesian framework.
 
 2. **Use a Python Library**  
    - **ArviZ**: `arviz.hdi()` can compute HDIs for specified probability masses.  
-   - **PyMC**: Some PyMC versions integrate with ArviZ seamlessly or provide built-in HDI functions.
+   - **PyMC**: Some PyMC versions integrate with ArviZ seamlessly or provide built-in functions to compute HDIs.
 
 3. **Check Zero‐Inflated or Multi‐Modal Cases**  
    - The function should handle large spikes at zero.  
@@ -118,51 +122,96 @@ While zero-inflation is common, multi-modal distributions are less frequent but 
 4. **Validate Convergence**  
    - As always, ensure your MCMC chains are converged (e.g., via R‐hat, ESS) before summarizing with HDIs.
 
+### Posterior vs. Predictive Distributions
+- **Parameter HDIs**: Summarize where model parameters (like coefficients) lie.  
+- **Predictive HDIs (what we need)**: Summarize the distribution of *forecasted outcomes*—e.g., the likely range of casualties or some other event.  
+  - For zero-inflation (or tail events), you’ll typically be looking at **posterior predictive** HDIs.
+
+### Code Snippet: A Quick Demonstration
+
+Below is a minimal example using PyMC + ArviZ to illustrate how we might compute HDIs in practice:
+
+```python
+import pymc as pm
+import arviz as az
+import numpy as np
+
+# Generate some zero-inflated data for demonstration
+np.random.seed(42)
+data = np.concatenate([np.zeros(50), np.random.poisson(lam=5, size=50)])
+
+with pm.Model() as model:
+    # Let's assume we have a mixture model or a simpler approach:
+    # For demonstration, a single Poisson - real model might differ for zero inflation
+    lam = pm.Exponential('lam', 1.0)
+    obs = pm.Poisson('obs', mu=lam, observed=data)
+    
+    # Sample from the posterior
+    trace = pm.sample(2000, tune=1000, target_accept=0.95)
+    
+    # Posterior predictive for forecasting (optional)
+    ppc = pm.sample_posterior_predictive(trace, return_inferencedata=True)
+
+# Compute a 95% HDI for 'lam' (parameter) and for the posterior predictive
+hdi_lam = az.hdi(trace, var_names=['lam'], hdi_prob=0.95)
+hdi_ppc = az.hdi(ppc, var_names=['obs'], hdi_prob=0.95)
+
+print("Parameter HDI (95%):\n", hdi_lam)
+print("Predictive HDI (95%):\n", hdi_ppc)
+```
+
+- The **Parameter HDI** reveals where our rate (\(\lambda\)) lies.  
+- The **Predictive HDI** (`obs`) reveals the likely range of the outcome.  
+- In what we do, only the latter is relevant. 
+
 ---
 
 ## Practical Tips & Tail-End Uncertainty
 
-1. **Report a Couple of Intervals**  
-   - We should report the 50% HDI for the “most likely zone,” plus a 90% and/or 95% HDI for broader coverage.
+1. **Report a Few Key Intervals**  
+   - We likely want to share a **50% HDI** (central region), a **95% HDI** (standard “wide” credible range), and a **99%** HDI for extreme coverage (total of six new columns if we split each interval into lower and upper bound).
 
 2. **Include Tail Probabilities**  
-   - If rare but impactful events matter — like “exceeding 100 fatalities” — we could report report `P(X > 1000)` as a separate stat (here return periods will also be helpful, but that is a different matter).  
-   - HDIs focus on the densest region, but we can still want to highlight the *extreme tail risk*.
+   - If rare but impactful events matter — e.g., “exceeding 1000 fatalities” — consider explicitly reporting `P(X > threshold)`.  
+   - HDIs focus on the densest region, so a separate tail probability highlights risk of catastrophic events.
 
-3. **Visual Aids**  
-   - Provide a density or histogram plot with the HDI region shaded. Show the zero spike if present.
+### Data Storage & Sharing
+- **Why**: We want to avoid sending users thousands of samples.  
+- **How**: Provide each coverage interval as two columns or keys, e.g.:
+  - `hdi_50_lower`, `hdi_50_upper`  
+  - `hdi_95_lower`, `hdi_95_upper`  
+  - `hdi_99_lower`, `hdi_99_upper`
 
-4. **Communicate Why**  
-   - Emphasize that you are *not ignoring* extreme outcomes; the HDI might exclude them if they’re low-probability.  
-   - If stakeholders need explicit tail info, a separate tail probability is easy to add.
 
 ---
 
 ## Common Pitfalls & Misunderstandings
 
 1. **Zero-Inflation Overlooked**  
-   - Always confirm whether your distribution has a notable spike at zero. The HDI might be [0,0] for a 50% coverage, which can look odd at first glance but is correct if half the samples are indeed zero.
+   - If half the data is zero, don’t be surprised by an HDI that’s [0,0] for narrower coverage. It can feel odd but is *correct*.
 
 2. **Forgetting Tail Communication**  
-   - HDIs can skip very low-density extremes. Since these extremes are critical, we might want to highlight them explicitly.
+   - HDIs skip low‐density extremes. If extremes matter, include them via tail probabilities or 99.9% HDIs.
+
+3. **Misinterpretation of “Most Probable”**  
+   - The HDI is about density, not the only possible region. Values outside the HDI can still occur—just with lower probability.
 
 ---
 
 ## Conclusion & Next Steps
 
-- **HDIs** offer a concise, density‐focused summary of zero‐inflated, skewed, or even multi‐modal posterior distributions.
-- They **help reduce** the data volume needed to communicate uncertainty - no need to send thousands of raw samples if a few HDIs (and maybe some tail probabilities) suffice.
+- **HDIs** provide a concise, density‐focused summary of zero‐inflated, skewed, or multi‐modal posterior distributions.
+- They **reduce** data volume needed to communicate uncertainty—no need to send thousands of raw samples when a few HDIs plus some tail probabilities suffice.
 - **Next Steps**:
-  1. **Adopt** HDIs using `ArviZ` or (more likely) `PyMC`.  
-  2. **Standardize** on a couple intervals (e.g., 50%, 95%, and 99% HDI) plus perhaps later an explicit tail risk stats for high-impact events.  
-  3. **Educate** end‐users on interpreting HDIs so they understand “where the mass is,” especially in zero‐inflated contexts.
+  1. **Pilot**: Use HDIs in an uncertainty aware forecast.  
+  2. **Standardize**: Decide which intervals (50%, 95%, 99%) to produce. Possibly add `P(X>threshold)` for tail risk.  
+  3. **Educate**: Ensure end‐users understand how to interpret an HDI (especially if zero inflation is high).
 
 ---
 
 ## References & Further Reading
 
-- **PyMC**: [https://www.pymc.io/](https://www.pymc.io/) – Bayesian modeling and MCMC in Python.  
-- **ArviZ**: [https://python.arviz.org/](https://python.arviz.org/) – Diagnostics, plots, and HDI calculations.  
-- **Kruschke, J. K.** _Doing Bayesian Data Analysis_ – section 2.3. THE STEPS OF BAYESIAN DATA ANALYSIS.
-- **Gelman, A. et al.** _Bayesian Data Analysis 3_ – Overviews of credible intervals, referencing highest density regions.
-
+- **PyMC**: [https://www.pymc.io/](https://www.pymc.io/) – Bayesian modeling & MCMC in Python.  
+- **ArviZ**: [https://python.arviz.org/](https://python.arviz.org/) – Diagnostics, plotting, and HDI calculations.  
+- **Kruschke, J. K.** _Doing Bayesian Data Analysis_ – (Ch. 2.3) Practical steps for Bayesian analysis & HDIs.  
+- **Gelman, A. et al.** _Bayesian Data Analysis_ – Overviews of credible intervals, referencing highest density regions.  
