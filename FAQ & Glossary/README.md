@@ -6,4 +6,8 @@ This folder contains answers to common questions and material explaining relevan
 - **[`NAME.md`](./.md)**: Details the process [XYZ]
 
 
+For all FAQs, check the [Q&A section](LINK) on our website! 
+
+Didn't find what you were looking for? Feel free to reach out to us at info@viewsforecasting.org! 
+
 ---
