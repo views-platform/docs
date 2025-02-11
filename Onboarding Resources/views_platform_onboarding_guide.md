@@ -28,13 +28,13 @@ Begin by exploring the [docs](https://github.com/views-platform/docs) repository
 
 **Step 2: Set Up the Development Environment**
 
-Clone the [views-pipeline-core](https://github.com/views-platform/views-pipeline-core) repository, as it contains the main pipeline for data processing and modeling. Follow the instructions in the `README.md` file to set up your development environment. Ensure you have all necessary dependencies installed and understand the pipeline's structure.
+Clone the [views-pipeline-core](https://github.com/views-platform/views-pipeline-core) repository, as it contains the main pipeline for data processing and modeling. Follow the instructions in the [`README.md`](https://github.com/views-platform/views-pipeline-core/README.md) file to set up your development environment. Ensure you have all necessary dependencies installed and understand the pipeline's structure.
 
 **Step 3: Explore Additional Repositories**
 
 Depending on your area of interest, delve into the other repositories:
 
-- For exploring the VIEWS models, see the [views-models](https://github.com/views-platform/views-models) repo. You can find all of the models in catalogs in the README file along with more information.
+- For exploring the VIEWS models, see the [views-models](https://github.com/views-platform/views-models) repo. You can find all of the models in catalogs in the `README.md` file along with more information.
 
 - For time series modeling with Darts, refer to [views-stepshifter](https://github.com/views-platform/views-stepshifter). Review the available models and consider running some of the provided examples to familiarize yourself with the framework.
 
@@ -44,7 +44,7 @@ Depending on your area of interest, delve into the other repositories:
 
 **Step 4: Review the Code of Conduct and Contributing Guidelines**
 
-Ensure you read through the organization's Code of Conduct and Contributing Guidelines, found in the `docs` repo. This will help you understand the expectations and processes for contributing to the projects.
+Ensure you read through the organization's Code of Conduct and Contributing Guidelines, found in the [`docs`](https://github.com/views-platform/docs) repo. This will help you understand the expectations and processes for contributing to the projects.
 
 **Step 5: Always consult the Glossary**
 
@@ -62,6 +62,19 @@ They are the authoritative source for understanding the crucial decisions made i
 - **About VIEWS**: For all other information about VIEWS, including our forecasts, collaborations and publications, visit our [website](https://viewsforecasting.org/). 
 
 
+## 4. Contributor Checklist
+
+To ensure a smooth onboarding process, make sure you have completed the following:
+
+- [ ] **Read the Code of Conduct**: Understand the expected behavior within the community.
+
+- [ ] **Set Up Development Environment**: Follow the setup guide in the relevant repository.
+
+- [ ] **Review Existing Issues**: Familiarize yourself with current discussions and ongoing work.
+
+- [ ] **Understand Key Repositories**: Explore the main repositories and their documentation.
+
+
 By following this guide and utilizing the resources provided, you'll be well-prepared to contribute effectively to the Views Platform. If you have any questions or need further assistance, feel free to reach out to the project maintainers or the community.
 
-Happy coding!
+Happy coding! 
