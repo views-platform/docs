@@ -28,7 +28,7 @@ Begin by exploring the [docs](https://github.com/views-platform/docs) repository
 
 **Step 2: Set Up the Development Environment**
 
-Clone the [views-pipeline-core](https://github.com/views-platform/views-pipeline-core) repository, as it contains the main pipeline for data processing and modeling. Follow the instructions in the [`README.md`](https://github.com/views-platform/views-pipeline-core/README.md) file to set up your development environment. Ensure you have all necessary dependencies installed and understand the pipeline's structure.
+Clone the [views-pipeline-core](https://github.com/views-platform/views-pipeline-core) repository, as it contains the main pipeline for data processing and modeling. Follow the instructions in the [`README.md`](https://github.com/views-platform/views-pipeline-core/blob/main/README.md) file to set up your development environment. Ensure you have all necessary dependencies installed and understand the pipeline's structure.
 
 **Step 3: Explore Additional Repositories**
 
