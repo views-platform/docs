@@ -12,7 +12,7 @@ The VIEWS Platform comprises several specialized repositories:
 
 - **[views-stepshifter](https://github.com/views-platform/views-stepshifter)**: Contains modeling procedures, evaluation, and forecasting using Darts.
 
-- **[views-models](https://github.com/views-platform/views-models)**: Hosts various models and related Jupyter Notebooks.
+- **[views-models](https://github.com/views-platform/views-models)**: Hosts various models and related model catalogs.
 
 - **[views-hydranet](https://github.com/views-platform/views-hydranet)**: Implements modeling procedures, evaluation, and forecasting using HydraNet in PyTorch.
 
