@@ -25,11 +25,18 @@ In **Bayesian machine learning and probabilistic forecasting**, model prediction
 
 To ensure **clarity, precision, and consistency** across models, ensembles, documentation, and research papers, we establish **ODR 014 defining the standard notation for stochastic predictions**.
 
+For related ODRs see:
+- (ODR 011 Stochastic & Deterministic Features in df)[insert link]
+- (ODR 012 Standard Tensor Representation)[insert link]
+- (ODR 013 on summarization of stochastic predictions)[insert link]
+
+
+
 ---
 
 ## **✅ Decision**  
 
-All **deterministic and stochastic predictions** must follow a **structured and standardized notation** for consistency across documentation, codebases, and research papers.  
+When communicating in writing, all **deterministic and stochastic predictions** must follow a **structured and standardized notation** for consistency across documentation, codebases, and research papers.  
 
 1. **A stochastic prediction ($\tilde{Y}$) represents a full predictive distribution.**  
 2. **A deterministic prediction ($\hat{y}$) is derived from a stochastic prediction using either the expectation ($\mathbb{E}[\tilde{Y}]$) or the MAP estimate ($\tilde{y}_{\text{map}}$).**  
@@ -47,7 +54,7 @@ All **deterministic and stochastic predictions** must follow a **structured and 
 | **Stochastic prediction** | $\tilde{Y} \sim p(y \mid X, \mathcal{D})$| Predictive distribution over possible outcomes. |
 | **One sample from $\tilde{Y}$** | $\tilde{y}^{(s)}$ | A single Monte Carlo sample from $\tilde{Y}$. |
 | **Full set of samples** | $\{ \tilde{y}^{(s)} \}_{s=1}^{n}$ | A set of $n$ posterior samples approximating $\tilde{Y}$. |
-| **Deterministic estimate from $\tilde{Y}$** | $\hat{y} = \mathbb{E}[\tilde{Y}]$ | Expected value of stochastic prediction. |
+| **Deterministic estimate from $\tilde{Y}$** | $\hat{y} = \mathbb{E}[\tilde{Y}]$ | Expected value (mean) of stochastic prediction. |
 | **Maximum A Posteriori (MAP) estimate** | $\tilde{y}_{\text{map}} = \arg\max_{y} p(y \mid X, \mathcal{D})$ | Most probable predicted value. |
 | **Multi-output model prediction** | $\tilde{Y}_j$ | Stochastic prediction for target index $j$. |
 
@@ -69,16 +76,48 @@ where:
 
 ## **📌 Formal Definition of Posterior Predictive Distribution**  
 
-To avoid ambiguity, we explicitly define the **posterior predictive distribution**, which governs stochastic predictions:  
+To avoid ambiguity, we explicitly define the **posterior predictive distribution**, which governs stochastic predictions. This distinction is especially important because **true Bayesian models** rely on the full posterior over parameters, whereas other probabilistic models can approximate predictive distributions without explicitly modeling parameter uncertainty.  
+
+For **Bayesian models**, the posterior predictive distribution is given by:  
+
 $$
 p(y \mid X, \mathcal{D}) = \int p(y \mid \theta, X) p(\theta \mid \mathcal{D}) d\theta
 $$
+
 where:  
+
 - $p(y \mid X, \mathcal{D})$ is the **distribution over future predictions**, given the observed dataset $\mathcal{D}$.  
 - $p(y \mid \theta, X)$ is the **likelihood of $y$** given a model with parameters $\theta$.  
-- $p(\theta \mid \mathcal{D})$ is the **posterior distribution over parameters** after observing $\mathcal{D}$.  
+- $p(\theta \mid \mathcal{D})$ is the **posterior distribution over parameters** after observing $\mathcal{D}$, capturing full Bayesian uncertainty.  
 
-A stochastic prediction $\tilde{Y}$ is then sampled from this posterior predictive distribution.
+This formulation applies to **fully Bayesian models** such as:  
+- Bayesian linear regression  
+- Gaussian processes  
+- Bayesian neural networks (e.g., via Hamiltonian Monte Carlo or variational inference)  
+
+However, in many **non-Bayesian models**, we lack access to the full parameter posterior $p(\theta \mid \mathcal{D})$, yet we can still approximate a **posterior predictive distribution** using alternative methods, such as:  
+
+- **Monte Carlo (MC) Dropout**: In deep neural networks, uncertainty is approximated by performing multiple stochastic forward passes with dropout enabled at inference time.  
+
+- **Ensembles of Models**: Aggregating predictions from multiple independently trained models to estimate predictive uncertainty.  
+
+- **Parametric Predictive Distributions**: Learning a distribution (e.g., Gaussian or Laplace) over outputs instead of a single point estimate.  
+
+For these **approximate uncertainty-aware models**, we represent the stochastic prediction as:  
+
+$$
+p(y \mid X, \mathcal{D}) \approx \frac{1}{n} \sum_{s=1}^{n} p(y \mid X, \theta_s),
+$$
+
+where $\theta_s$ are sampled model weights from an implicit posterior approximation (e.g., dropout masks or ensemble members).  
+
+Regardless of whether a model is **fully Bayesian or uses an approximate method**, we denote the stochastic prediction as **$\tilde{Y}$**, representing a **random variable following the predictive distribution**. A sample from this distribution is denoted as:  
+
+$$
+\tilde{y}^{(s)} \sim p(y \mid X, \mathcal{D})
+$$
+
+where $s$ indexes one of $n$ stochastic draws.  
 
 ---
 
