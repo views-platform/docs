@@ -50,7 +50,7 @@ pred_[transformation_prefix]_[target_name]
 | `lx_` | **Natural Log of target + exp(-100)** | `log(exp(-100) + target)`, alternative zero handling |
 | `by_` | **Binary** | Constrained to {0,1} |
 
-### **Example Target Names ([Target Naming Catalog (TBD)]())**  
+### **Example Target Names ([Target Naming Catalog](https://github.com/views-platform/docs/blob/main/Organizational%20Guides/taget_naming_catalog.md))**  
 | Target_name | Target Details |  
 |-------------|---------------|  
 | `sb_` | **UCDP GED State-Based Violence (Best)** |  
