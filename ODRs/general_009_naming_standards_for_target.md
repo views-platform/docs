@@ -37,7 +37,7 @@ All target variables must follow a **consistent, structured naming convention**:
 Where:  
 - **Observed values (`y`) → No prefix.**  
 - **Forecasted values (`ŷ`) → Prefix with `pred_`.**  
-- **Target transformation** → Specifies applied transformation (e.g., `ln_` for log transformation).  
+- **Target transformation** → Specifies applied transformation (e.g., `ln_` for ln(target+1) transformation).  
 - **Target name** → Standardized variable name from the Target Naming Catalog.  
 
 All naming conventions are maintained in the [Target Naming Catalog](https://github.com/views-platform/docs/blob/main/Organizational%20Guides/target_naming_catalog.md).  
