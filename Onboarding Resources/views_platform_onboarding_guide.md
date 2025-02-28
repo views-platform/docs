@@ -47,16 +47,16 @@ Depending on your area of interest, delve into the other repositories:
 Ensure you read through the organization's Code of Conduct and Contributing Guidelines, found in the [`docs`](https://github.com/views-platform/docs) repo. This will help you understand the expectations and processes for contributing to the projects.
 
 
-**Step 4: Check Technical Requirements**
+**Step 5: Check Technical Requirements**
 
 Consult the [`README.md`](https://github.com/views-platform/views-pipeline-core/blob/main/README.md) file to make sure you have the appropriate setup. Currently, the Views Platform can only be executed on Mac or Linux machines. Make sure you are connected to the VPN (it is NOT enough to be at PRIO and connect to the network via Ethernet) and that your machine has enough RAM to run pipeline code.
 
 
-**Step 5: Set Up the Development Environment**
+**Step 6: Set Up the Development Environment**
 
 There are multiple ways to set up your environment. All pipeline components/repositories can either be cloned using Git or installed locally using the pip package manager. Whichever method you chose, make sure to set up a virtual environment first using e.g. Anaconda and set the python version to 3.11. Proceed to clone the [views-pipeline-core](https://github.com/views-platform/views-pipeline-core) or install it locally. Depending on your usecase, clone other pipeline repositories that you need, e.g [views-models](https://github.com/views-platform/views-models). For further information on how to set up your development environment, consult the [`README.md`](https://github.com/views-platform/views-pipeline-core/blob/main/README.md) file. Ensure you have all necessary dependencies installed and understand the pipeline's structure. Once the environment is setup, you are ready to execute the Views pipeline.
 
-**Step 5: Execute Pipeline Code**
+**Step 7: Execute Pipeline Code**
 
 At the moment it is possible to 
 
