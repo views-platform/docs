@@ -1,6 +1,6 @@
 # VIEWS Platform Onboarding Guide
 
-Welcome to the Views Platform! This guide is designed to help you navigate our repositories and utilize the available resources effectively.
+Welcome to the VIEWS Platform! This guide is designed to help you navigate our repositories and utilize the available resources effectively.
 
 ## 1. Overview of Repositories
 
@@ -24,19 +24,19 @@ For more information on the individual contents of the repositories, please see 
 
 **Step 1: Familiarize Yourself with the Documentation**
 
-Begin by exploring the [docs](https://github.com/views-platform/docs) repository. This will provide you with an understanding of the organizational standards and decision records that guide our projects. Here you can also find the [Glossary](../FAQ%20&%20Glossary/glossary.md) containing all the relevant terminology for navigating through our material. Pay attention to the Organizational Decision Records (ODRs) to grasp the rationale behind key decisions. You can also find the [Contribution Guides](/Contribution%20Guides/README.md) for details on how to make your first contribution.
+Begin by exploring the [docs](https://github.com/views-platform/docs) repository. This will provide you with an understanding of the organizational standards and decision records that guide our projects. Here you can also find the [Glossary](../FAQ%20&%20Glossary/glossary.md) containing all the relevant terminology for navigating through our material. Pay attention to the Organizational Decision Records (ODRs) to grasp the rationale behind key decisions in the organization. Look through the [Organizational Guides](../Organizational%20Guides/) to understand some of the guiding principles of the VIEWS project. You can also find the [Contribution Guides](/Contribution%20Guides/README.md) for details on how to make your first contribution. When making a contribution to the project, make sure to follow any relevant rules and structures which can be found in the [Templates](../Templates/) directory. 
 
 **Step 2: Set Up the Development Environment**
 
-Clone the [views-pipeline-core](https://github.com/views-platform/views-pipeline-core) repository, as it contains the main pipeline for data processing and modeling. Follow the instructions in the [`README.md`](https://github.com/views-platform/views-pipeline-core/blob/main/README.md) file to set up your development environment. Ensure you have all necessary dependencies installed and understand the pipeline's structure.
+Once you are familiar with the key components of the documentation, clone the [views-pipeline-core](https://github.com/views-platform/views-pipeline-core) repository, as it contains the main pipeline for data processing and modeling. The [`README.md`](https://github.com/views-platform/views-pipeline-core/blob/main/README.md) file contains more detailed information on the views-pipeline-core components and how they interact with one another. You can find more detailed instructions on the technical setup of the pipeline in the [Internal Tech Guide](). 
 
 **Step 3: Explore Additional Repositories**
 
-Depending on your area of interest, delve into the other repositories:
+When you have completed the previous step, depending on your area of interest, delve into the other repositories:
 
-- For exploring the VIEWS models, see the [views-models](https://github.com/views-platform/views-models) repo. You can find all of the models in catalogs in the `README.md` file along with more information.
+- For exploring the VIEWS models, see the [views-models](https://github.com/views-platform/views-models) repo. You can find all of the models in catalogs in the `README.md` file along with detailed information on how models are implemented.
 
-- For time series modeling with Darts, refer to [views-stepshifter](https://github.com/views-platform/views-stepshifter). Review the available models and consider running some of the provided examples to familiarize yourself with the framework.
+- For time-series modeling with Darts, refer to [views-stepshifter](https://github.com/views-platform/views-stepshifter). Review the available models and consider running some of the provided examples to familiarize yourself with the framework.
 
 - For HydraNet implementations, check out [views-hydranet](https://github.com/views-platform/views-hydranet). Understand the architecture and experiment with the models to gain hands-on experience.
 
@@ -66,15 +66,22 @@ They are the authoritative source for understanding the crucial decisions made i
 
 To ensure a smooth onboarding process, make sure you have completed the following:
 
-- [ ] **Read the Code of Conduct**: Understand the expected behavior within the community.
+- [ ] **Read the Code of Conduct**: Understand the expected behavior within the community. Found in the [`docs`](https://github.com/views-platform/docs) repository.
+  
+- [ ] **Set Up Development Environment**: Follow the setup guide in the relevant repository, starting with the [views-pipeline-core](https://github.com/views-platform/views-pipeline-core) repository, and consult the [Internal Tech Guide] for more setup details.
+  
+- [ ] **Review Existing Issues**: Familiarize yourself with open issues across repositories, especially in areas relevant to your contributions, to stay informed about ongoing work.
 
-- [ ] **Set Up Development Environment**: Follow the setup guide in the relevant repository.
+- [ ] **Understand Key Repositories**: Explore and understand the purpose of key repositories like [views-pipeline-core](https://github.com/views-platform/views-pipeline-core), [views-models](https://github.com/views-platform/views-models), [views-stepshifter](https://github.com/views-platform/views-stepshifter), [views-hydranet](https://github.com/views-platform/views-hydranet), and [views-evaluation](https://github.com/views-platform/views-evaluation). Review the documentation for each to understand how they fit into the overall platform.
 
-- [ ] **Review Existing Issues**: Familiarize yourself with current discussions and ongoing work.
+- [ ] **Consult the Glossary**: Use the terms defined in the [Glossary](../FAQ%20&%20Glossary/glossary.md) in your code and documentation. Consistency in terminology helps avoid misunderstandings and keeps the codebase clear.
 
-- [ ] **Understand Key Repositories**: Explore the main repositories and their documentation.
+- [ ] **Explore Organizational Decision Records (ODRs)**: Revisit ODRs to understand the rationale behind key decisions in the VIEWS project. These records are an authoritative source and should guide your contributions.
 
+- [ ] **Review Contribution Guides**: Understand the best practices for contributing to VIEWS by reviewing the [Contribution Guides](/Contribution%20Guides/README.md) and ensure you follow the relevant rules and structures.
 
-By following this guide and utilizing the resources provided, you'll be well-prepared to contribute effectively to the Views Platform. If you have any questions or need further assistance, feel free to reach out to the project maintainers or the community.
+- [ ] **Contribute to Documentation**: When making a contribution, ensure the appropriate documentation is updated. This includes README files, repository-specific details, and ODRs where applicable.
 
-Happy coding! 
+By following this checklist, you'll ensure a smooth and effective onboarding process, and be well-equipped to contribute meaningfully to the VIEWS Platform. If you have any questions or need help, don't hesitate to reach out!
+
+Happy coding!
