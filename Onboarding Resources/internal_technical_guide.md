@@ -1,6 +1,6 @@
 # VIEWS Platform Technical Guide
 
-Welcome to the Views Platform! This guide is designed to help you set up your environment and train your first Views models. 
+Welcome to the VIEWS Platform! This guide is designed to help you set up your environment and train your first VIEWS models. 
 
 ## 1. Technical Requirements
 
@@ -14,7 +14,7 @@ The following steps are platform dependent, so only follow the ones applicable t
 
 **Linux**: 
 
-Step 4: Depending on your Linux Distribution, you might need the to install the build subsystem (e.g.build-essential in Debian/Ubuntu). You can test if you have these by opening a terminal and typing gcc. If it says "error: no input file" or similar you are good to go, if it says "command not found" you need to install it. 
+Step 4: Depending on your Linux Distribution, you might need to install the build subsystem (e.g.build-essential in Debian/Ubuntu). You can test if you have these by opening a terminal and typing gcc. If it says "error: no input file" or similar you are good to go, if it says "command not found" you need to install it. 
 
 Step 5: Make sure zsh is installed. You can test if you have zsh by opening a terminal and typing zsh. If it says "command not found" install it with e.g. `sudo apt install zsh` in Ubuntu.
 
@@ -30,7 +30,7 @@ Step 5: Make sure zsh is installed. Try zsh --version before installing it from 
 
 In theory, it is not necessary to set up a new environment manually for executing pipeline code as executing the run.sh file takes care of this automatically. However, it is also possible to set up your environment manually or to use an already existing environment. Each model/ensemble in views-models contains a run.sh and a main.py file. The run.sh file will set up a conda  environment, activate it  and start model training while the main.py file only starts model training and assumes that you are in an appropriate environment. For first time users, it is best to simply use the run.sh file as it automatically installs all dependencies and does not rely on the user to set up the right environment: 
 
-Step 1: Git clone all Views Platform components
+Step 1: Git clone all VIEWS Platform components
 
 Step 2: Run the following commands to make sure the viewser configs are set properly:
 - `viewser config set xy`
@@ -41,7 +41,7 @@ Step 2: Run the following commands to make sure the viewser configs are set prop
 
 Step 3: Navigate to [views-models](https://github.com/views-platform/views-models) and select the model/ensemble you want to run. Make sure you have the rights to run the `run.sh` file in the respective model/ensemble directory: `chmod +x run.sh` (same command on Linux and Mac!)
 
-Step 4: Run the run.sh file using appropriate flags. See the views-models [views-models](https://github.com/views-platform/views-models) repository for detailed information on which flags to use and for further use cases e.g. how to build a new model. If you simply want to train and evaluate the model run `./run.sh -t -e` (same command on Linux and Mac!).
+Step 4: Run the run.sh file using appropriate flags. See the [views-models](https://github.com/views-platform/views-models) repository for detailed information on which flags to use and for further use cases e.g. how to build a new model. If you simply want to train and evaluate the model run `./run.sh -t -e` (same command on Linux and Mac!).
 
 Congratulations, your model should be training now! 
 
