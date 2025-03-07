@@ -49,4 +49,4 @@ Congratulations, your model should be training now!
 
 - The environment created above can be used at any later point in time e.g. for generating predictions. You can either run the `run.sh` file with the appropriate flags and it will simply activate the environment created above or you can activate the environment by yourself and execute the `main.py` file. 
 
-- All Views Platform components can also be installed individually using the pip package manager e.g. `pip install views-pipeline-code`. Make sure to set up a conda environment with python version 3.11 as it is tested and works.
+- All Views Platform components can also be installed individually using the pip package manager e.g. `pip install views-pipeline-core`. Make sure to set up a conda environment with python version 3.11 as it is tested and works.
