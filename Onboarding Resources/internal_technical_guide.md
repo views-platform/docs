@@ -32,7 +32,7 @@ In theory, it is not necessary to set up a new environment manually for executin
 
 Step 1: Git clone all VIEWS Platform components
 
-Step 2: Run the following commands to make sure the viewser configs are set properly:
+Step 2: You need to configure viewser. Refer to Jim or Mihai for the proper configurations and run the following commands (by replacing the `xy`):
 - `viewser config set xy`
 - `viewser config set xy `
 - `viewser config set AZURE_BLOB_STORAGE_ACCOUNT_KEY xy`
@@ -49,4 +49,4 @@ Congratulations, your model should be training now!
 
 - The environment created above can be used at any later point in time e.g. for generating predictions. You can either run the `run.sh` file with the appropriate flags and it will simply activate the environment created above or you can activate the environment by yourself and execute the `main.py` file. 
 
-- All Views Platform components can also be installed individually using the pip package manager e.g. `pip install views-pipeline-core`. Make sure to set up a conda environment with python version 3.11 as it is tested and works.
+- All VIEWS Platform components can also be installed individually using the pip package manager e.g. `pip install views-pipeline-core`. Make sure to set up a conda environment with python version 3.11 as it is tested and works.
