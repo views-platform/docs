@@ -2,8 +2,8 @@
 
 | Info         | Details  |
 |--------------|----------|
-| Last updated | 30 .07.2024 |
-| By author    | Simon    |
+| Last updated |  |
+| By author    |    |
 
 
 ## Key Technical Terms
