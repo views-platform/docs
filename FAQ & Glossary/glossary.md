@@ -35,6 +35,15 @@ See the Quickstart guide [here](https://docs.wandb.ai/quickstart).
 ### Utils/Utility Functions
 Collection of functions or tools that serve various general purposes and are commonly reused across different parts of a software project. These utility functions are often not specific to any particular domain or task but rather provide common functionalities that can be helpful in many different situations.
 
+
+### Run Types
+
+The VIEWS pipeline supports three types of model runs which can be configured with different flags (see [views-pipeline-core](https://github.com/views-platform/views-pipeline-core/tree/main) for further information on flags)
+
+- **Calibration**: The calibration run type can be used for model training and hyperparameter sweeps. With the --train and --evaluate flag, it splits the input data into a train and a test partition, trains a calibration model on the train partition and evaluates it on the test partition. With the --sweep flag, hyperparameter tuning can be performed.
+- **Validation**: As in the process of model training and validation, the model can overfit to the validation set, the validation run type is used to obtain model metrics on an unseen test partition. As in the calibration run (with appropriate flags), the validation run splits the data into a train and test partition, trains the model on the training partition and validates it on the test partition. This run type should be used to obtain model performance metrics.
+- **Forecasting**: The run type to generate actual forecasts. The data is split into a train and a forecast partition.
+
 ## Key Forecasting Terms
 
 ### forecast_step
