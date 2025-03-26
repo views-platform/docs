@@ -6,6 +6,7 @@ We suggest starting by reading through the **[`views_platform_onboarding_guide.m
 
 Here you can also find: 
 
-- **[`code_of_conduct.md`](./code_of_conduct.md)**: Overview the organization code of conduct. 
+- **[`code_of_conduct.md`](./code_of_conduct.md)**: Overview the organization code of conduct.
+- **[`internal_technical_guide.md`](./internal_technical_guide.md)**: Onboarding for new team members containing the details for technical requirements and setup.
 
 ---
