@@ -75,6 +75,18 @@ The VIEWS pipeline supports three types of model runs which can be configured wi
 - **Example**: A forecast made in January 2021 for the month of March 2021 has a forecast lead time of 2 months.
 
 ## Model Terminology
+**Model Naming Convention:** The models belonging to the VIEWS pipeline follow a predetermined naming standard, which takes the form of `adjective_noun`, for example *brown_cheese*.
+
+The models are collected in the [model catalog](https://github.com/views-platform/views-models?tab=readme-ov-file#catalogs), with the following properties:
+- **Model Name:** adjective_noun
+- **Algorithm:** 
+- **Targets:** e.g. ln_ged_sb_dep
+- **Input Features:** name and link to the used queryset
+- **Non-default Hyperparameters:** name and link to the hyperparameters
+- **Forecasting Type:** TBD
+- **Implementation Status:** deployed, shadow, deprecated
+- **Implementation Date:** 
+- **Author:** creator of the model
 
 ### 1. Recursive Multi-Step Forecasting
 - **Definition**: A single model trained to predict one step ahead, used iteratively to forecast multiple future steps.
