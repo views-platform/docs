@@ -136,7 +136,7 @@ Once the latest data is ingested, running the CM and PGM ensambles is done throu
 
 To run any of the VIEWS models or ensembles, you need to make sure you have cloned all of the relevant repos locally. Specifically, cloning views-models and views-pipeline-core is a necesary first step. 
 
-### 1. Run *cm* Forecasts
+### 1. Run *cm* Ensembles
 
 Currently, the cm ensemble producing monthly forecasts is [pink_ponyclub](https://github.com/views-platform/views-models/tree/main/ensembles/pink_ponyclub), although the steps to run any model or ensemble are the same. 
 
@@ -157,15 +157,22 @@ If you only wish to run a single model and not an ensemble, you can navigate to 
 ./run.sh -r forecasting -t -f  
 ```
 
-
- 
-
+The  `-r` `-t` and `-f` are flags which determine the  specifics of the run type (whether you wish to do calibration/validation/forecasting). You can find full documentation and more information here: [VIEWS Pipeline CLI Documentation](https://github.com/views-platform/views-pipeline-core/tree/main/views_pipeline_core/cli#command-line-arguments).
 
 ---
 
-### 2. Run *pgm* Forecasts
+### 2. Run *pgm* Ensembles
+
+Currently, the pgm ensemble producing monthly forecasts is [skinny_love](https://github.com/views-platform/views-models/tree/main/ensembles/skinny_love). Running the pgm ensemble is done the same way as the cm ensembles. In the terminal run:
 
 
+ ```
+  cd views-models/ensembles/skinny_love
+```
+
+```
+./run.sh -r forecasting -t -f  
+```
 ---
 
 ### 3. Create Maps and Figures
