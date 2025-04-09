@@ -21,8 +21,8 @@ This document contains step-by-step instructions for executing the VIEWS ML pipe
 - [6. (Optional) Check Ingested Data](#6-optional-check-ingested-data)
 
 ### Part 2: Running Forecasts (CM + PGM)
-- [1. Run *cm* Forecasts](#1-run-cm-forecasts)
-- [2. Run *pgm* Forecasts](#2-run-pgm-forecasts)
+- [1. Run *cm* Ensemble](#1-run-cm-forecasts)
+- [2. Run *pgm* Ensemble](#2-run-pgm-forecasts)
 - [3. Create Maps and Figures](#3-create-maps-and-figures)
 
 ### Part 3: Publishing the Forecasts
@@ -130,10 +130,35 @@ Use the [Ingestion Test Notebook](https://github.com/prio-data/views_outreach/bl
 
 ---
 
-## 🚀 Part 2: Running Forecasts (CM + PGM)
+## 🚀 Part 2: Running Ensembles 
+
+Once the latest data is ingested, running the CM and PGM ensambles is done through the terminal. In the [views-models](https://github.com/views-platform/views-models) you can find all of the implemented models and ensembles along with target variables and additional information. Here you can choose which ensemble you wish to run. 
+
+To run any of the VIEWS models or ensembles, you need to make sure you have cloned all of the relevant repos locally. Specifically, cloning views-models and views-pipeline-core is a necesary first step. 
 
 ### 1. Run *cm* Forecasts
 
+Currently, the cm ensemble producing monthly forecasts is [pink_ponyclub](https://github.com/views-platform/views-models/tree/main/ensembles/pink_ponyclub), although the steps to run any model or ensemble are the same. 
+
+ 1. Once you have cloned the repo, through the terminal navigate to the `ensembles` directory within the `models` directory by running:
+
+ ```
+  cd views-models/ensembles/pink_ponyclub
+```
+If you only wish to run a single model and not an ensemble, you can navigate to all the model directories by typing
+
+ ```
+ cd 'model_name'
+```
+
+2. Once you are in your desired model/ensemble directory, all you need to do is run the .sh file. This you do by running the following command in the temrinal: 
+
+ ```
+./run.sh -r forecasting -t -f  
+```
+
+
+ 
 
 
 ---
@@ -228,4 +253,37 @@ Marina/Angelica will upload updated eval files to the predcomp server and leader
 
 ---
 
-Happy forecasting! 🚀
+## Monthly Run Checklist
+
+### Part 1: Data Ingestion
+- [ ] GED data ingested (`GED_loader.ipynb`)
+- [ ] ACLED data ingested (`ACLED_loader.ipynb`)
+- [ ] Topics data ingested (`Topics_data_version2.ipynb`)
+- [ ] (Optional) Other predictors checked / updated
+- [ ] Waited for `viewser` to restart (~30–40 min)
+- [ ] Ingestion test run successfully (`ingestion_test.ipynb`)
+
+### Part 2: Running Forecasts
+- [ ] `cm_futurepredictions.ipynb` updated and run
+- [ ] `pgm_futurepredictions.ipynb` updated and run
+- [ ] Config files updated (`config1.py`, `config2.py`)
+- [ ] `Monthly_run_visualization_final.ipynb` run
+
+### Part 3: Publishing and API
+- [ ] Codebooks updated (`forecasts` and `predictors`)
+- [ ] Archived copies of codebooks saved with `_YYYYMM`
+- [ ] Sent codebooks to Jim for API update
+- [ ] Jim confirmed run pushed to API
+- [ ] Wiki page updated with new run
+- [ ] Forecast CSVs downloaded (`download_API_data_for_website.ipynb`)
+- [ ] Data confirmed in API (forecast + predictor)
+- [ ] Dashboard synced (after 03:00 next day)
+- [ ] Eval data updated (Marina/Angelica)
+- [ ] Latest data CSVs uploaded to [website](https://viewsforecasting.org/data/#latest-data)
+- [ ] Codebook link updated on website
+- [ ] Newsletter sent
+- [ ] Social media posts made (Twitter/X, LinkedIn)
+
+
+
+##  Happy forecasting! 🚀
