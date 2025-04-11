@@ -28,14 +28,7 @@ This document contains step-by-step instructions for executing the VIEWS ML pipe
 - [3. Create Maps and Figures](#3-create-maps-and-figures)
 
 ### Part 3: Publishing the Forecasts
-- [1. Update the API Codebooks](#1-update-the-api-codebooks)
-- [2. Push the Run to the API](#2-push-the-run-to-the-api)
-- [3. Update the API Wiki](#3-update-the-api-wiki)
-- [4. Download Forecast CSVs](#4-download-forecast-csvs)
-- [5. Check API Datasets](#5-check-api-datasets)
-- [6. Wait for Dashboard Update](#6-wait-for-dashboard-update)
-- [7. Update Eval Data](#7-update-eval-data)
-- [8. Publish and Share](#8-publish-and-share)
+- 
 
 ---
 
