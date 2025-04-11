@@ -2,7 +2,7 @@
 
 ### Last Updated: April 2025 by Marina
 
-This document contains step-by-step instructions for executing the VIEWS ML pipeline to produce monthly true future forecasts. It is split into three parts – the first part refers to **updating the necesary data**; the second part contains **instructions for executing the pipeline** and producing the forecasts, while the third part details the steps for **publishing the forecasts**. Each step can be done individually for its own purpose – for example, following instructions in Part 2 can be followed for simply interacting with the pipeline. 
+This document contains step-by-step instructions for executing the VIEWS ML pipeline to produce monthly forecasts. It is split into three parts – the first part refers to **updating the necesary data**; the second part contains **instructions for executing the pipeline** and producing forecasts, while the third part details the steps for **publishing the forecasts**. Each step can be done individually for its own purpose – for example, instructions in Part 2 can be followed for simply interacting with the pipeline. 
 
 
 - **Part 1**: Data Ingestion  
@@ -25,7 +25,7 @@ This document contains step-by-step instructions for executing the VIEWS ML pipe
 ### Part 2: Running Forecasts (CM + PGM)
 - [1. Run *cm* Ensemble](#1-run-cm-forecasts)
 - [2. Run *pgm* Ensemble](#2-run-pgm-forecasts)
-- [3. Create Maps and Figures](#3-create-maps-and-figures)
+- [3. (Optional) Create Maps and Figures](#3-create-maps-and-figures)
 
 ### Part 3: Publishing the Forecasts
 - 
