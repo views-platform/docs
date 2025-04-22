@@ -178,6 +178,7 @@ Once the latest data is ingested, running the CM and PGM ensambles is done throu
 
 To run any of the VIEWS models or ensembles, you need to make sure you have cloned all of the relevant repos locally. Specifically, cloning [views-models](https://github.com/views-platform/views-models) and [views-pipeline-core](https://github.com/views-platform/views-pipeline-core) is a necesary first step. 
 
+It is also crucial you are **connected to the PRIO VPN** in order to be able to access the necesary data and run the models. 
 
 
 ### 1. Run *cm* Ensembles
