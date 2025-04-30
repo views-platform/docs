@@ -4,9 +4,9 @@
 
 ## **1. Introduction: Why Governance & Ethics Matter in AI Forecasting**  
 
-Artificial intelligence (AI) is transforming **conflict forecasting**, offering new ways to predict **violence, instability, and humanitarian risks**. However, **without structured governance and ethical safeguards**, AI forecasting risks becoming **opaque, biased, or even dangerous**—ultimately **reducing its usability for decision-making**.  
+Artificial intelligence (AI) is transforming **conflict forecasting**, offering new ways to predict **violence, instability, and humanitarian impacts**. However, **without structured governance and ethical safeguards**, AI forecasting risks becoming **opaque, biased, or even dangerous**—ultimately **reducing its usability for decision-making**.  
 
-AI forecasting must be **governable, auditable, and accountable** to be used in **peace and conflict management**. But governance is **not just about high-level ethical principles**—it must be **operationalized within MLOps** to ensure reliability, transparency, and trust.  
+AI forecasting must be **governable, auditable, and accountable** to uphold its intended purpose and prevent misuse. Governance is **not just about high-level ethical principles** — it must be **operationalized within MLOps** to ensure reliability, transparency, and trust.
 
 🚀 **AI governance in conflict forecasting is not an external review process—it is embedded in structured MLOps workflows, ensuring compliance, fairness, and security at every stage.**  
 
@@ -27,12 +27,14 @@ Effective governance must **proactively address critical risks** that can underm
 📌 **Challenge:** Historical conflict data may **reflect systemic biases** (e.g., underreporting of violence in marginalized regions, biased media coverage).  
 📌 **Risk:** **Reinforcing stereotypes or overlooking risks in underrepresented communities**.  
 
-✅ **Solution: Automated Bias Audits & Monitoring**  
-- **Bias detection & mitigation** is embedded into the **MLOps CI/CD pipeline**, ensuring models meet fairness thresholds **before deployment**.  
-- **Real-time fairness monitoring** ensures AI does not **drift toward biased predictions over time**.  
-- **Human analysts intervene only when bias alerts are triggered**—AI governance is automated first, reviewed manually when needed.  
+✅ **Solution: Automated Bias Audits & Lifecycle Fairness Monitoring**  
+- **Bias detection & mitigation** is embedded into the **MLOps CI/CD pipeline**, ensuring fairness safeguards are applied **across the entire AI lifecycle**—from data sourcing to post-deployment monitoring.  
+- **Fairness thresholds** are established using recognized bias evaluation metrics (e.g., demographic parity, equalized odds) and validated against historical data and expert review, ensuring models do not reinforce systemic biases.  
+- **Input data undergoes bias detection before training**, preventing harmful patterns from propagating into forecasts.  
+- **Continuous fairness monitoring** ensures AI does not drift toward biased predictions over time, especially as forecasts shape real-world decisions. Policy interventions reacting to AI forecasts can introduce feedback loops, subtly shifting model assumptions and creating long-term horizon biases. Governance mechanisms must account for these evolving dynamics, ensuring fairness remains stable even as external conditions change.  
+- **Human analysts intervene only when bias alerts are triggered** — AI governance is automated first, reviewed manually when needed. However, research indicates that users often underutilize machine-generated forecasts due to mistrust while favoring outputs that confirm their pre-existing beliefs—even when those outputs are less accurate (Dietvorst et al., 2020). To counteract this, governance mechanisms must ensure that bias alerts are not only technically robust but also framed in ways that enhance user trust and discourage selective adoption of AI insights.
 
-🔹 **Bias mitigation is not an afterthought—it is continuously enforced through automated fairness checks in MLOps.**  
+- **Bias mitigation is not an afterthought** — it is continuously enforced through automated fairness checks at multiple stages of the AI pipeline, including data sourcing, model training, validation, and post-deployment monitoring. Automated audits detect potential biases before deployment, while real-time drift detection ensures fairness remains stable over time.
 
 ---
 
@@ -41,13 +43,19 @@ Effective governance must **proactively address critical risks** that can underm
 📌 **Risk:** **Decision-makers may hesitate to trust AI-generated insights if they cannot assess their reliability**.  
 
 ✅ **Solution: Structured, Useful Transparency**  
-- **AI does not need to be fully interpretable—it must be meaningfully explainable**.  
-- **Forecast dashboards** provide:  
-  🔹 **Uncertainty quantification** – How confident is the model?  
-  🔹 **Feature importance analysis** – What factors influenced the forecast?  
-  🔹 **Counterfactual explanations** – What would change if inputs were different?  
+- AI does not need to be fully interpretable—it must be meaningfully explainable. While there is no universal consensus on these terms, in this context:
 
-🔹 **We don’t expose raw AI internals—governance ensures AI provides decision-relevant transparency, not unnecessary complexity.**  
+    - Interpretability refers to how well a human (typically a developer or researcher) can understand the internal workings of the AI model itself.
+    - Explainability focuses on making AI decisions understandable to end users—such as policymakers—by providing insights into why a particular forecast was generated.
+    
+    To support transparency, we define explainability in practical terms: AI forecasts should provide decision-relevant insights (e.g., feature importance, uncertainty estimates) without overwhelming users with unnecessary complexity. (For a more detailed discussion of interpretability vs. explainability, see our working definitions document [link].)
+
+- **Forecast dashboards** provide:  
+  - **Uncertainty quantification** – How confident is the model?  
+  - **Feature importance analysis** – What factors influenced the forecast?  
+  - **Counterfactual explanations** – What would change if inputs were different?  
+
+- **We don’t expose raw AI internals—governance ensures AI provides decision-relevant transparency, not unnecessary complexity.**  
 
 ---
 
@@ -60,7 +68,7 @@ Effective governance must **proactively address critical risks** that can underm
 - **Independent audits validate model integrity**, ensuring predictions are **not tampered with**.  
 - **Automated change-tracking in MLOps logs all modifications**, ensuring **full traceability**.  
 
-🔹 **Governance ensures AI conflict forecasting remains independent, unbiased, and protected from manipulation.**  
+- **Governance ensures AI conflict forecasting remains independent, unbiased, and protected from manipulation.**  
 
 
 ---
