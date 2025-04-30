@@ -14,8 +14,6 @@ To ensure AI forecasting systems are trusted and trustworthy, they must be gover
 Conflict forecasting is especially vulnerable to temporal fragility — as the world evolves, yesterday’s model can become today’s liability. From geopolitical realignments to data coverage shifts, the landscape is never stable. This means governance cannot be static. It must include mechanisms for adaptation, continuous monitoring, and the ability to detect when a model’s assumptions no longer hold.
 
 
-
-
 > AI governance in conflict forecasting is not an external review process — it is a continuous, embedded function within structured MLOps workflows, ensuring compliance, fairness, and security from design through deployment.
 
 Without this level of operational governance, AI forecasting systems risk:
@@ -101,7 +99,7 @@ Conflict forecasting models are often technically complex, drawing on large volu
 
 Yet in practice, their role is often overstated or misunderstood. These concepts are not universal requirements for responsible AI — and in many operational settings, they are neither sufficient nor strictly necessary.
 
-### 🔍 What Interpretability and Explainability Mean
+### What Interpretability and Explainability Mean
 
 - Interpretability refers to the degree to which a model’s internal structure — such as its parameters, logic, and decision rules — can be understood directly by humans. For example, linear regression is often considered interpretable because its behavior is transparent by design.
 
@@ -215,7 +213,7 @@ AI-generated conflict forecasts carry strategic weight. In volatile or contested
 
 > The core risk is not technical error — it is motivated reasoning at scale: when forecasts are interpreted through the lens of confirmation bias and used to reinforce, rather than interrogate, existing power structures.
 
-### 🔍 Why Misuse Must Be Taken Seriously
+### Why Misuse Must Be Taken Seriously
 
 Conflict forecasts are increasingly integrated into high-stakes decision environments — where data can drive funding, deployment, media focus, or international pressure. But in these settings, even correct predictions can be strategically reframed, serving narratives they were never intended to support.
 
@@ -307,7 +305,7 @@ Key design strategies include:
   Collaborative development across academic, humanitarian, and regional actors reduces the risk of narrative capture and increases the legitimacy of system outputs.
 
 
-### ⚖️ Framing with FAIR and ACTS
+### Framing with FAIR and ACTS
 
 These practices are not just defensive. They reflect a deeper commitment to designing forecasting systems that are both open and governable.
 
