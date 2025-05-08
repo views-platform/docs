@@ -1,6 +1,6 @@
-# ⚠️ REVISED DRAFT ⚠️
+# ⚠️ DRAFT ⚠️
 
-# **Why We Fail-Fast: Preventing Silent Failures in AI Forecasting**
+# **Why We Fail-Fast: Preventing Silent Failures in AI-based Forecasting**
 
 ## 1. Why Failing Fast Is Critical in AI Forecasting
 
@@ -30,9 +30,9 @@ Fail-Fast is a core MLOps principle that prioritizes **fast, visible, and struct
 
 **Fail-Fast means:**
 
-1. **Detect early** – Stop failure before it reaches decision-makers
-2. **Interrupt immediately** – Halt system output to prevent silent propagation
-3. **Log and resolve** – Create structured records for recovery, learning, and governance
+1. **Detect early** - Stop failure before it reaches decision-makers
+2. **Interrupt immediately** - Halt system output to prevent silent propagation
+3. **Log and resolve** - Create structured records for recovery, learning, and governance
 
 This stands in contrast to **Fail-Slow systems**, where:
 
@@ -93,9 +93,9 @@ This section describes the technical practices that make Fail-Fast real - transf
 
 Fail-Fast systems must be:
 
-* **Automated** – not dependent on manual checks
-* **Auditable** – generating structured, traceable logs
-* **Adaptive** – constantly learning from past failure events
+* **Automated** - not dependent on manual checks
+* **Auditable** - generating structured, traceable logs
+* **Adaptive** - constantly learning from past failure events
 
 ### Core Engineering Practices
 
@@ -115,7 +115,7 @@ Fail-Fast systems must be:
 
 ## 5. Conclusion: From Fragility to Institutional Trust
 
-In high-risk environments, the question is not **if** AI systems will fail - but **how** they will fail, and whether institutions are prepared to respond.
+In high-risk environments, the question is not **if** AI systems will fail - but **when**, **where**. and **how** they will fail - and whether institutions are prepared to respond.
 
 **Fail-Fast is the difference between system collapse and system resilience.**
 
