@@ -4,7 +4,9 @@
 
 ## 1. Why Failing Fast Is Critical in AI Forecasting
 
-AI forecasting systems are increasingly used to predict conflict, instability, and humanitarian risk. In volatile settings, their outputs help shape aid delivery, diplomatic strategy, and public response. But in these high-stakes environments, one risk stands out above all: **failure that goes unnoticed**.
+AI forecasting systems are increasingly used to predict conflict, instability, and humanitarian risk. In high-stakes settings, these tools are becoming embedded in decision-making — informing resource allocation, public safety planning, and diplomatic strategy.
+
+As their influence grows, so do the risks. Many challenges deserve attention, but one stands out for its potential to quietly erode both usefulness and trust: **critical failures that go undetected.**
 
 Failures are inevitable. Silent failures are unacceptable.
 
@@ -115,22 +117,19 @@ Fail-Fast systems must be:
 
 ## 5. Conclusion: From Fragility to Institutional Trust
 
-In high-risk environments, the question is not **if** AI systems will fail - but **when**, **where**. and **how** they will fail - and whether institutions are prepared to respond.
+In high-risk environments, the question is not *if* forecasting systems will fail — but *when*, *where*, and *how* — and whether institutions are equipped to respond.
 
-**Fail-Fast is the difference between system collapse and system resilience.**
+**Fail-Fast is what separates silent breakdown from structured resilience.**
 
 It ensures that:
 
-* Failures are stopped **before** they influence decisions
-* Problems are **time-stamped and explainable**
-* Response is **structured, recoverable, and auditable**
+* Failures are caught **before** they shape decisions
+* Issues are **time-stamped, logged, and explainable**
+* Responses are **recoverable, auditable, and institutionalized**
 
-> **Fail-Fast turns breakdowns into checkpoints - not disasters.**
+> **Fail-Fast transforms hidden failure into visible accountability.**
 
-In doing so, it makes forecasting systems not only more reliable, but more governable. It ensures institutions don’t just adopt AI - they remain accountable for it.
+By embedding this discipline into forecasting infrastructure, we do more than stabilize technical performance — we build **governable systems**. Systems that don’t just function under pressure, but remain **answerable, improvable, and trusted**.
 
----
-
-**Fail-Fast is not about preventing failure.**
-It is about building systems - and institutions - that can **fail responsibly**.
+Fail-Fast is not about eliminating failure. It is about ensuring that when failure comes, it does not erode trust — it strengthens it.
 
