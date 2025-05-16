@@ -2,7 +2,7 @@
 
 | ODR Info           | Details                                |
 |--------------------|----------------------------------------|
-| Subject            | Target variable naming                 |
+| Subject            | Transformation prefixes for target     |
 | ODR Number         | 007                                    |
 | Status             | proposed                               |
 | Category           | general                                |
