@@ -2,8 +2,8 @@
 
 | Info         | Details  |
 |--------------|----------|
-| Last updated | 30 .07.2024 |
-| By author    | Simon    |
+| Last updated |  |
+| By author    |    |
 
 
 ## Key Technical Terms
@@ -34,6 +34,15 @@ See the Quickstart guide [here](https://docs.wandb.ai/quickstart).
 
 ### Utils/Utility Functions
 Collection of functions or tools that serve various general purposes and are commonly reused across different parts of a software project. These utility functions are often not specific to any particular domain or task but rather provide common functionalities that can be helpful in many different situations.
+
+
+### Run Types
+
+The VIEWS pipeline supports three types of model runs which can be configured with different flags (see [views-pipeline-core](https://github.com/views-platform/views-pipeline-core/tree/main) for further information on flags)
+
+- **Calibration**: The calibration run type can be used for model training and hyperparameter sweeps. With the --train and --evaluate flag, it splits the input data into a train and a test partition, trains a calibration model on the train partition and evaluates it on the test partition. With the --sweep flag, hyperparameter tuning can be performed.
+- **Validation**: As in the process of model training and validation, the model can overfit to the validation set, the validation run type is used to obtain model metrics on an unseen test partition. As in the calibration run (with appropriate flags), the validation run splits the data into a train and test partition, trains the model on the training partition and validates it on the test partition. This run type should be used to obtain model performance metrics.
+- **Forecasting**: The run type to generate actual forecasts. The data is split into a train and a forecast partition.
 
 ## Key Forecasting Terms
 
@@ -66,6 +75,18 @@ Collection of functions or tools that serve various general purposes and are com
 - **Example**: A forecast made in January 2021 for the month of March 2021 has a forecast lead time of 2 months.
 
 ## Model Terminology
+**Model Naming Convention:** The models belonging to the VIEWS pipeline follow a predetermined naming standard, which takes the form of `adjective_noun`, for example *brown_cheese*.
+
+The models are collected in the [model catalog](https://github.com/views-platform/views-models?tab=readme-ov-file#catalogs), with the following properties:
+- **Model Name:** adjective_noun
+- **Algorithm:** 
+- **Targets:** e.g. ln_ged_sb_dep
+- **Input Features:** name and link to the used queryset
+- **Non-default Hyperparameters:** name and link to the hyperparameters
+- **Forecasting Type:** TBD
+- **Implementation Status:** deployed, shadow, deprecated
+- **Implementation Date:** 
+- **Author:** creator of the model
 
 ### 1. Recursive Multi-Step Forecasting
 - **Definition**: A single model trained to predict one step ahead, used iteratively to forecast multiple future steps.
