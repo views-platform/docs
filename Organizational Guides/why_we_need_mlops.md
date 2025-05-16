@@ -1,6 +1,6 @@
-# ⚠️ DRAFT ⚠️
+# ⚠️ DRAFT ⚠️ (with placeholders)
 
-# MLOps for Mission-Critical AI: Building Systems We Can Trust Under Pressure"
+# MLOps for Mission-Critical AI: Building Systems We Can Trust Under Pressure
 
 Conflict forecasting is one of the more demanding applications of AI. But the challenges it poses  -  dynamic environments, opaque models, institutional risk, ethical exposure  -  are common across mission-critical domains. This paper uses forecasting as a stress test to explore how MLOps can become the operational backbone for trustworthy AI.
 
