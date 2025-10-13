@@ -31,6 +31,7 @@ In the context of the VIEWS pipeline, the term model is used to reference many r
 - [Key Forecasting Terms](#key-forecasting-terms)
 - [Foundational Time-Series Concepts](#foundational-time-series-concepts)
 - [Model Forecasting Strategies](#model-forecasting-strategies)
+- [Model Terminology](#model-terminology)
 - [Evaluation Strategies and Schemes](#evaluation-strategies-and-schemes)
 - [Data and Model Stability Concepts](#data-and-model-stability-concepts)
 - [Modeling and MLOps Practices](#modeling-and-mlops-practices)
@@ -57,10 +58,10 @@ In the context of the VIEWS pipeline, the term model is used to reference many r
 
 ## Key Forecasting Terms
 
-- **Data Partitioning**: For robust evaluation, historical data is divided into three distinct, chronological partitions. Each partition is a self-contained unit for a specific stage of the modeling lifecycle. The `Calibration` and `Validation` partitions are further subdivided into a `Training Period` and a `Test Period`.
-    -   **Calibration Partition**: Used for initial development and hyperparameter tuning.
-    -   **Validation Partition**: Used for the final evaluation of candidate model specifications.
-    -   **Forecasting Partition**: Used to train the final **Trainable Model Specification** for generating true future forecasts.
+- **Data Partitioning and Run Types**: For robust evaluation and forecasting, the pipeline is executed in one of three run types, each of which creates specific chronological partitions of the data.
+    -   **Calibration Run**: This run type is used for initial model development and hyperparameter tuning (`--sweep`). It creates a **Calibration Partition** of the data, which is subdivided into a `Training Period` and a `Test Period` to train and evaluate initial model versions.
+    -   **Validation Run**: To get performance metrics on unseen data, this run type creates a **Validation Partition**. Similar to the calibration run, this partition is split into a `Training Period` and a `Test Period` to train a model and validate its performance.
+    -   **Forecasting Run**: This run type is used to generate true future forecasts. It creates a **Forecasting Partition**, which is used to train the final `Trainable Model Specification` on all available historical data before predicting the future.
 - **Training Period & Test Period**: These define the time spans used for training and evaluating models.
     -   **Training Period**: The specific, continuous block of time (from a start date to an end date) that defines the data used to train a model\'s parameters. The data within this period is known as the `Training Set`.
     -   **Test Period**: The specific, continuous block of time (from a start date to an end date) that defines the holdout data used for the final evaluation of a trained `Model Specification`. This period must always occur after the `Training Period`. The data within this period is known as the `Test Set`.
@@ -107,6 +108,22 @@ In the context of the VIEWS pipeline, the term model is used to reference many r
 - **Ensemble Forecasting**: A method where predictions from multiple trainable model specifications (**Constituent Models**), each that can produce forecasts for the steps 1 to the maximum horizon in a forecasting window, are combined to produce a single, often more accurate, final forecast.
 - **Constituent Model**: An individual `Trainable Model Specification` that serves as a component in an `Ensemble Forecasting` model. Its predictions are one of several that are aggregated to produce the final ensemble forecast.
 - **Reconciliation of forecasts across resolutions**: A post-processing step to ensure that forecasts that have a hierarchical relationship acros spatial-temporal resolutions are coherent. For example, adjusting the forecasts for all PRIO-Grid cell-months within a country-month so that the sum of those PRIO-Grid cell-month expected values equals the independently generated forecast for the expected value (fo the sum) for that country as a whole.
+
+---
+
+## Model Terminology
+**Model Naming Convention:** The models belonging to the VIEWS pipeline follow a predetermined naming standard, which takes the form of `adjective_noun`, for example *brown_cheese*.
+
+The models are collected in the [model catalog](https://github.com/views-platform/views-models?tab=readme-ov-file#catalogs), with the following properties:
+- **Model Name:** adjective_noun
+- **Algorithm:** 
+- **Targets:** e.g. ln_ged_sb_dep
+- **Input Features:** name and link to the used queryset
+- **Non-default Hyperparameters:** name and link to the hyperparameters
+- **Forecasting Type:** TBD
+- **Implementation Status:** deployed, shadow, deprecated
+- **Implementation Date:** 
+- **Author:** creator of the model
 
 ---
 
