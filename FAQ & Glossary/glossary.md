@@ -1,122 +1,170 @@
 # Glossary
 
-| Info         | Details  |
-|--------------|----------|
-| Last updated | 30 .07.2024 |
-| By author    | Simon    |
+This glossary provides an overview of the core terms used throughout the VIEWS ML pipeline. It contains definitions of all the relevant terms along with potential VIEWS adapted terminology and explanations.
 
+| Info         | Details               |
+|--------------|-----------------------|
+| Last updated | 13.10.2025            |
+| By author    | Simon, Gemini-2.5-pro |
+
+---
+
+### Trained Model Object vs. Trainable Model Specification vs. Training Algorithm vs. Family of Training Algorithms
+
+In the context of the VIEWS pipeline, the term model is used to reference many related but nunanced concepts. These can be disambiguited. **Trainable Model Specification** can be used to refer to a precise, unique, and reproducible instance of a forecasting workflow that includes all the information necessary to compute a trained model artifact -- which in turn can produce forecasts if given feature values. This term is more specific than the general term "model" (which could alternatively refer to a Random Forest training algorithm with hyperparameters set to specific values or a training algorithm family like a Random Forest with the hyperparamter values left unspecified). A Computable Model Specification is defined by:
+- A training algorithm, which is a specific instantiation of a machine learning or statistical algorithm whose parameters can be trained with data conditional on hyperparameter values being set (but this machine learning algorithm does not include a data specification).
+    - A unique, predetermined set of hyperparameter values is part of the training algorithm definition, see below.
+    - if one is referring to a family of training algorithms that are similar except for using potentially different hyperparameter values then use training algorithm family/class.
+- training data specification rules, which define for any window of true-future or simulated-future target values how to retrieve the necessary data to use the specific training algorithm to produce a trained model artifact. The training data specification rules have two parts:
+    - Rules for any window that will produce a well-defined set of input features for the training algorithm.
+    - Rules for any window that will provide a target for the training algorithm.
+- A window which is a well-defined range of months that the target and features span. This is input to the training data specification so the training data can be returned based on the rules.
+- There are other ancillary information that can be associated with a trainable model specification:
+    - All code and artifacts necessary to generate a comprehensive forecast (e.g., a 36-month forecast for stepshift models) when the data specification is combined with the training algorithm.
+- Note: After a Trainable Model Specification is processed the resulting object that can produce forecasts is a **Trained Model Artifact**.
+
+---
+
+## Table of Contents
+
+- [Key Technical Terms](#key-technical-terms)
+- [Key Forecasting Terms](#key-forecasting-terms)
+- [Foundational Time-Series Concepts](#foundational-time-series-concepts)
+- [Model Forecasting Strategies](#model-forecasting-strategies)
+- [Evaluation Strategies and Schemes](#evaluation-strategies-and-schemes)
+- [Data and Model Stability Concepts](#data-and-model-stability-concepts)
+- [Modeling and MLOps Practices](#modeling-and-mlops-practices)
+- [Project-Specific Terminology](#project-specific-terminology)
+
+---
 
 ## Key Technical Terms
 
-### Config File
-Config files specify the settings and hyperparameters used to train machine learning models, allowing for easy experimentation and optimization without modifying the code – i.e., you don't want to hard code (i.e., write directly) hyperparameters into your model code.
+- **Knowledge Graph**: A central data structure that organizes all spatial-temporal information used in the pipeline. It represents entities like countries, grid-cells, and months as nodes, and defines the relationships between them (e.g., `Contains`, `Neighbors`). This graph allows for the precise and flexible querying of data across different resolutions (e.g., finding all grid-cells within a country for a specific year).
+- **Training Algorithm Family**: The underlying mathematical approach or class of methods used for a machine learning task (e.g., `Random Forest`, `LSTM`, `XGBoost`).
+- **Training Algorithm**: A training algorithm that when given only a data specification defines a unique `Computable Model Specification`. A `Training Algorithm` can belong to a `Training Algorithm Family` but has to also have all necessary specific hyperparameter values assigned to be a `Training Algorithm`.
+- **Trainable Model Specification**: A `Trainable Model Specification` is a concrete application of a single model algorithm, chosen and configured to solve a specific task.
+- **Trained Model Artifact**: The serialized file that is the output of a model training process. It contains the learned parameters of the model and can be loaded to make predictions on new data.
+- **Trainable Model Specification Registry (`M`)**: The central registry or catalog where every `Trainable Model Specification` is stored and assigned a unique identifier (`m`). This registry acts as a dictionary, tracking the `Training Algorithm`, `Data Specification Rules`, and any resulting `Trained Model Artifacts` associated with each specification.
+- **Configuration Management**: Configuration files specify the settings, hyperparameters, and data sources used to define a **Trainable Model Specification**.
+- **Training process**: The computation of a `trainable model specification` into a `trained model artifact` which can be used for forecasting.
+- **Hyperparameters**: Parameters that are not learned from the data during the training process but are set prior to the training process. They are a key component of the **Training Algorithm** within the **Trainable Model Specification**.
+- **Parameters**: The internal variables of a model that are learned directly from the training data. Unlike hyperparameters, parameters values can change as a result of the training process (e.g., the coefficients in a linear regression).
+- **Sweep**: An automated process of searching for the optimal values of hyperparameters for a set of Computable Model Specifications that often (but do not have to) belong to the same `training algorithm family`. See also Johnny Lawrence.
+- **Weights & Biases (wandb)**: An MLOps platform used to log information produced during the lifecycle of a **Trained Model Artifact** and its **Trainable Model Specification**.
 
-### Orchestration
-The Prefect Flow coordinates the execution of tasks, ensuring that they are executed in the correct order based on their dependencies.
-
-### Hyperparameters
-Hyperparameters are parameters or settings that are not directly learned from data during the training process of a machine learning model, but rather are set prior to training and influence the behavior and performance of the model. For example, hyperparameters could include the learning rate, number of estimators, number of jobs, and transformation of data.
-
-For more information, see the [Weights & Biases article "Intro to MLOps: Hyperparameter Tuning"](https://wandb.ai/site/articles/intro-to-mlops-hyperparameter-tuning).
-
-### Prefect
-Prefect is used for workflow orchestration, defining the sequence of tasks (task1, task2, task3) and their dependencies.
-
-See the Quickstart guide [here](https://docs.prefect.io/latest/getting-started/quickstart/).
-
-### Sweep
-A sweep configuration is a set of specifications defining how hyperparameters should be explored during a hyperparameter search, the hyperparameters to be tuned, and their respective ranges or values to be tried. 
-
-### Weights & Biases (wandb)
-Weights & Biases (W&B) is used to log relevant information (such as data, transformations, and results) produced by each task during the execution of the workflow. W&B logging within each task enables tracking and monitoring of the workflow's progress and outputs, enhancing visibility and reproducibility.
-
-See the Quickstart guide [here](https://docs.wandb.ai/quickstart).
-
-### Utils/Utility Functions
-Collection of functions or tools that serve various general purposes and are commonly reused across different parts of a software project. These utility functions are often not specific to any particular domain or task but rather provide common functionalities that can be helpful in many different situations.
+---
 
 ## Key Forecasting Terms
 
-### forecast_step
-- **Definition**: The time increment at which predictions are made in a time series, reflecting the data's frequency (e.g., daily, monthly, yearly).
-- **Example**: Forecasting 36 months into the future involves steps {0,1,2,…,35}, where step 0 represents the first forecasted period immediately following the last observed data point.
+- **Data Partitioning**: For robust evaluation, historical data is divided into three distinct, chronological partitions. Each partition is a self-contained unit for a specific stage of the modeling lifecycle. The `Calibration` and `Validation` partitions are further subdivided into a `Training Period` and a `Test Period`.
+    -   **Calibration Partition**: Used for initial development and hyperparameter tuning.
+    -   **Validation Partition**: Used for the final evaluation of candidate model specifications.
+    -   **Forecasting Partition**: Used to train the final **Trainable Model Specification** for generating true future forecasts.
+- **Training Period & Test Period**: These define the time spans used for training and evaluating models.
+    -   **Training Period**: The specific, continuous block of time (from a start date to an end date) that defines the data used to train a model\'s parameters. The data within this period is known as the `Training Set`.
+    -   **Test Period**: The specific, continuous block of time (from a start date to an end date) that defines the holdout data used for the final evaluation of a trained `Model Specification`. This period must always occur after the `Training Period`. The data within this period is known as the `Test Set`.
+- **Training Set**: The actual collection of data points that fall within the `Training Period`.
+- **Test Set (Holdout Set)**: The actual collection of data points that fall within the `Test Period`, used to evaluate a model trained on the corresponding `Training Set`.
+- **Forecast Origin**: The first time point for which a forecast is generated.
+- **Forecast End**: The temporal identifier marking the end of the forecast period.
+- **Forecast Horizon**: The total duration or number of steps into the future for which predictions are made.
+- **Forecast Step**: The time increment between predictions within a **sequence** of forecasts.
+- **Future Covariates vs. Past Covariates**: A critical distinction between types of input features:
+    -   **Future Covariates**: Features whose future values are known or can be determined in advance (e.g., calendar-based features like month or year). These can be used safely in any model.
+    -   **Past Covariates**: Features whose values are only known for the past and cannot be known in the future (e.g., the value of a stock market index). Using these requires careful handling (e.g., lagging) to avoid data leakage.
+- **Panel Data**: A dataset that contains time-series observations for multiple subjects (e.g., countries, grid cells). It has both a time dimension and a cross-sectional dimension.
+- **Data Schema**: A formal definition of the structure of a dataset, specifying the names, data types, order, and constraints of each column or feature. It acts as a contract for data moving through the pipeline.
+- **Sequence**: An ordered set of data points indexed by time. In time-series forecasting, this is the fundamental data structure for both input features and target variables.
+- **Secret**: If you sent me (Simon) a kiwi emoji in a slack channel - preferable one with multiple people in it, I will buy Mike a beer. I\'m just checking if anyone actually reads this.
+- **Point Estimate**: A single value that represents the most likely outcome of a forecast.
+- **Probabilistic Forecast**: A type of forecast that outputs a full probability distribution for each future time step, rather than a single `Point Estimate`. This allows for the quantification of uncertainty and the generation of `Prediction Intervals`.
+- **Prediction Interval**: A range of values within which a future observation is expected to fall with a certain probability.
 
-### month_id
-- **Definition**: A unique identifier assigned to each month in a time series, starting from the initial observation period and continuing sequentially.
-- **Example**: January 1980 is month_id 1, February 1980 is month_id 2, and so on. If the last observed month is December 2020 (month_id 492), January 2021 is month_id 493.
+---
 
-### year
-- **Definition**: The actual calendar year in which a data point or forecast occurs.
-- **Example**: 1980, 2021, etc.
+## Foundational Time-Series Concepts
 
-### forecast_start
-- **Definition**: The temporal identifier marking the beginning of the forecast period.
-- **Example**: If the last observed month is December 2020 (month_id 492), January 2021 (month_id 493) marks the forecast_start.
+- **Autocorrelation (ACF)**: The correlation between a time series and a lagged version of itself. The Autocorrelation Function (ACF) is a plot of these correlations at different lags and is a key tool for identifying temporal dependencies.
+- **Seasonality**: A repeating, predictable pattern in a time series that occurs at regular intervals. It is one of the three classical components of a time series, along with `Trend` and cycle.
+- **Trend**: The long-term, underlying direction of a time series. It is one of the three classical components of a time series, along with `Seasonality` and cycle.
+- **Non-Stationary Process**: A time series whose statistical properties (e.g., mean, variance) change over time.
 
-### forecast_end
-- **Definition**: The temporal identifier marking the end of the forecast period.
-- **Example**: If the forecast begins in January 2021 (month_id 493) and spans 36 months, the forecast_end would be December 2023 (month_id 528).
+---
 
-### forecast_horizon
-- **Definition**: The total duration into the future for which predictions are made, measured in the same units as the time series data.
-- **Example**: A forecast horizon of 36 months indicates predictions are made for the next 36 months following the forecast_start.
+## Model Forecasting Strategies
 
-### forecast_lead_time
-- **Definition**: The duration between when a forecast is made and when the predicted event occurs.
-- **Example**: A forecast made in January 2021 for the month of March 2021 has a forecast lead time of 2 months.
+- **Forecasting Paradigm**: A classification of forecasting algorithm families based on their underlying approach. The two main paradigms are **native time-series models** (e.g., ARIMA) which model temporal dependencies directly, and **reduction-based forecasters**, which adapt standard regression algorithms (e.g., RandomForest) to the forecasting task by using lagged features.
+- **Recursive Multi-Step Forecasting**: A single one-step-ahead-trainable model specification is created and trained to predict one step ahead targets only and the resulting one-step-ahead trained model artifact is used iteratively to produce multiple forecasts from the steps from 1 to the maximum forecast horizon.
+    -   **Common Algorithms**: `Linear Regression`, `Random Forest`, `XGBoost`.
+    -   **Notes**: This approach is simple but can suffer from error accumulation, as prediction errors from early steps are propagated into later steps. For consistency, Recursive Multi-Step Forecasting also entails the organization of a overall-trainable model specification from the one-step-ahead-trainable model specification and the composition of a overall-trained model artifact from the one-step-ahead-trained model artifact to make forecasts for the window from 1 to the maximum horizon steps into the future.
+- **Direct Multi-Step Forecasting**: A set of separate step-specific-trainable model specifications are each trained to predict each future time step directly from 1 to the maximum forecast horizon. (Internal name: **stepshifter**).
+    -   **Common Algorithms**: `Linear Regression`, `Random Forest`, `XGBoost`.
+    -   **Notes**: This approach can avoid error accumulation but is more computationally expensive. For consistency, Direct Multi-Step Forecasting also entails the organization of a overall-trainable model specification from the step-specific-trainable model specifications and the composition of a overall-trained model artifact from the step-specific-trained model artifacts to make forecasts for the window from 1 to the maximum horizon steps into the future.
+- **Multi-Output Forecasting**: A single trainable model specification is trained to predict the entire sequence of future values from 1 to the maximum horizon in one operation.
+    -   **Common Algorithms**: `Seq2Seq`, `RNNs (LSTM, GRU)`, `Transformers`.
+    -   **Notes**: This is often the most principled approach, capable of learning complex relationships between future time steps. However, there are computational costs and evaluation of the cross-time-step information is more complicated.
+- **Ensemble Forecasting**: A method where predictions from multiple trainable model specifications (**Constituent Models**), each that can produce forecasts for the steps 1 to the maximum horizon in a forecasting window, are combined to produce a single, often more accurate, final forecast.
+- **Constituent Model**: An individual `Trainable Model Specification` that serves as a component in an `Ensemble Forecasting` model. Its predictions are one of several that are aggregated to produce the final ensemble forecast.
+- **Reconciliation of forecasts across resolutions**: A post-processing step to ensure that forecasts that have a hierarchical relationship acros spatial-temporal resolutions are coherent. For example, adjusting the forecasts for all PRIO-Grid cell-months within a country-month so that the sum of those PRIO-Grid cell-month expected values equals the independently generated forecast for the expected value (fo the sum) for that country as a whole.
 
-## Model Terminology
+---
 
-### 1. Recursive Multi-Step Forecasting
-- **Definition**: A single model trained to predict one step ahead, used iteratively to forecast multiple future steps.
-- **Example**: Predicting conflict incidents in grid cell months for the next 36 months by using each forecasted value as an input for the next prediction.
-- **Algorithms**:
-    - Linear Regression
-    - Random Forests
-    - Gradient Boosting Machines (e.g., XGBoost, LightGBM)
-    - Multilayer Perceptrons (MLPs)
-- **Notes**:
-    - Utilizes conventional Supervised Machine Learning models.
-    - Involves adding lagged features to input data to learn temporal dependencies.
+## Evaluation Strategies and Schemes
 
-### 2. Direct Multi-Step Forecasting (STEPSHIFTER IN VIEWS TERMS)
-- **Definition**: Separate (sub) models trained for each forecasting horizon to predict specific future time steps directly.
-- **Example**: Training distinct (sub) models to predict conflict incidents 1 month ahead, 2 months ahead, up to 36 months ahead.
-- **Algorithms**:
-    - Linear Regression
-    - Random Forests
-    - Gradient Boosting Machines (e.g., XGBoost, LightGBM)
-    - Multilayer Perceptrons (MLPs)
-- **Notes**:
-  - Also utilizes conventional Supervised Machine Learning models but avoids error accumulation seen in recursive forecasting.
-  - Requires more computational resources then Recursice Multi-Step Forecasting as multiple (sub) models are trained.
+- **Offline vs. Online Evaluation**: A high-level distinction in evaluation philosophy:
+    -   **Offline Evaluation**: Evaluating a model\'s performance on historical data, before deployment. **Backtesting** is the primary method.
+    -   **Online Evaluation (Live Evaluation)**: The ongoing process of evaluating a deployed model\'s performance as new, real-world data becomes available.
+- **Backtesting**: The process of evaluating a **Model Specification**\'s performance on historical data to simulate how it would have performed in the past.
+- **Loss Function vs. Evaluation Metric**: These two terms define what is being measured during model development, and they are not always the same:
+    -   **Loss Function**: The function that is directly minimized by the model during the training process. It guides the learning algorithm.
+    -   **Evaluation Metric**: The metric that is used to measure the final performance of a model on a holdout test set. This metric is chosen to reflect the actual, real-world performance that is most important for the project.
+- **Rolling-Origin, Fixed Length Holdout**: A robust backtesting strategy that simulates a real-world forecasting scenario by generating forecasts for 1 to the maximum horizon time steps that each originate from a sequence of multiple, rolling simulated futures/origins.
+- **Metric Aggregation Methods**: Different ways to average performance metrics from a backtest:
+    -   **Time-Series-Wise**: Averaging the metric over the entire forecast horizon for each series. There are $W$ values of the metric calculated where $W$ is the number of windows.
+    -   **Step-Wise**: Averaging the metric for each forecast step independently. There are then the same number of values for this metric as the maximum horizon step, $H^{(max)}$.
+    -   **Month-Wise**: Averaging the metric for each calendar month in the test set. Here there are $W+H^{(max)}$ values for the metric.
+    -   **Equal-time-slice-weighted-Time-Series-Wise**: A weighted average is taken over all of the scores within each of the windows so that the resulting average across all the windows includes an equal amount of information for each time-slice. Without this weighting, the first and last time slices in a sequence of rolling-windows are given less weight because they only appear in a limited number of the windows (1 for the first and last time slice, 2 for the second and second-to last time slice, etc up to a maximum of 12 counting from either end). The weight applied is simply $\frac{1}{C^{(t)}_{\{1:W\}}}$ where $C^{(t)}_{1:W}$ is the count of how many of the $W$ window time slice $t$ falls within.
+- **Model Contamination**: A form of information leakage where knowledge of the test set\'s performance inadvertently influences the model selection or training process, leading to an overly optimistic and invalid evaluation. This is a critical failure mode in any backtesting scheme.
 
-### 3. Autoregressive Model (AR)
-- **Definition**: A linear model regressing the current value of a time series on its previous values, using a predefined number of lagged observations.
-- **Example**: Using the last five months of conflict data to predict the current month's conflict level.
-- **Algorithms**:
-    - ARMA (Autoregressive Moving Average)
-    - ARIMA (Autoregressive Integrated Moving Average)
-    - SARIMA (Seasonal ARIMA)
-- **Notes**:
-  - Specialized Time Series Models effective for stationary series with linear relationships.
+---
 
-### 4. Multi-Output Models
-- **Definition**: Models trained to predict multiple future values at once, producing a sequence of future predictions in a single step.
-- **Example**: Using a Seq2Seq transformer or LSTM U-net to forecast conflict incidents for the next 36 months.
-- **Algorithms**:
-    - Seq2Seq Models (Sequence-to-Sequence)
-    - Recurrent Neural Networks (RNNs) - Includes LSTM (Long Short-Term Memory) and GRU (Gated Recurrent Units) networks.
-    - Transformer Models
-- **Notes**:
-    - Suitable for complex, non-linear relationships.
-    - Can handle long sequences effectively.
+## Data and Model Stability Concepts
 
-### Summary Table for Model Terminology
+- **Domain Shift**: A general term for any situation where the data distribution of the environment where the model is deployed (the "target domain") is different from the data distribution of the environment where the model was trained (the "source domain"). The two most important types are:
+    -   **Data Drift**: Occurs when the distribution of the **input features** changes.
+    -   **Concept Drift**: Occurs when the relationship between the **input features and the target variable** changes.
+- **Drift Detection**: The process of using statistical tests or monitoring techniques to identify `Domain Shift`, signaling that a model may need to be retrained or that there is an issue with the data pipeline.
 
-| **Method**              | **Definition**      | **Algorithms** |**Notes**  |
-|-------------------------|---------------------|----------------|-----------|
-| **Recursive Multi-Step**       | Single model predicts one step ahead, used iteratively for multiple steps    | Linear Regression, Random Forests, Gradient Boosting (XGBoost, LightGBM), MLPs      | Uses lagged features to learn temporal dependencies  |
-| **Direct Multi-Step (stepshift)**          | Separate models trained for each forecasting horizon  | Separate Linear Regression, Gradient Boosting, MLPs                                   | Avoids error accumulation; requires more computational resources   |
-| **Autoregressive (AR)**        | Linear model regressing current value on previous values  | ARMA, ARIMA, SARIMA  | Effective for stationary series with linear relationships                                               |
-| **Multi-Output Models**        | Models trained to predict multiple future values at once | Seq2Seq, RNNs (LSTM, GRU), Transformers| Suitable for complex, non-linear relationships; handles long sequences effectively                       |
+---
+
+## Modeling and MLOps Practices
+
+- **Baseline Model**: A simple, often naive, forecasting model that serves as a reference point for evaluating more complex models. A complex model is only useful if it performs better than a simple baseline. Common examples include:
+    -   **No-Change / Persistence Model**: Predicts that the future value will be the same as the last observed value.
+    -   **Zero Model**: Always predicts zero for all future steps.
+    -   **Conflictology Model**: Predicts the historical, long-term average value for a given location and time of year (analogous to a climatology forecast in weather prediction). This baseline can have several variations:
+        -   **Deterministic vs. Probabilistic**: A deterministic version predicts a single number (the historical mean), while a probabilistic version provides a full distribution of historical outcomes from which samples can be drawn.
+        -   **Stratified**: The historical average can be calculated over all time points (unstratified) or can be conditioned on specific factors. This stratification can be done across any dimension, such as time (e.g., a specific decade), space (e.g., a specific country or PRIO-Grid cell), or other categorical features (e.g., the country\'s regime type).
+- **Feature Engineering**: The process of creating new input features for a model from the raw data. This can involve creating lagged variables, interaction terms, or other transformations to improve model performance.
+- **Backfill**: The process of running a data processing or forecasting pipeline on historical data, for example, to generate features or forecasts for past periods that were not processed at the time.
+
+---
+
+## Project-Specific Terminology
+
+- **Prediction Parallelogram**: A VIEWS-specific term for a data structure that organizes the output of a `Rolling-Origin Holdout` backtest. Each row represents a complete forecast sequence generated from a different forecast origin, creating a parallelogram shape when visualized over time.
+
+---
+
+## Things to Clarify
+
+1.  The new glossary introduces a precise hierarchy: `Training Algorithm Family`, `Training Algorithm`, `Trainable Model Specification`, and `Trained Model Artifact`. How is this conceptual distinction practically implemented in the project\'s repository structure and code? For instance, is there a specific directory for `Trainable Model Specifications`?
+
+2.  The new `Equal-time-slice-weighted-Time-Series-Wise` metric for backtesting is quite specific. What was the issue with the simpler aggregation methods that prompted the creation of this more complex, weighted approach?
+
+3.  The document notes that `Direct Multi-Step` and `Multi-Output` forecasting are computationally expensive. What are the practical guidelines used to decide when the potential performance gain from these methods justifies their higher cost compared to the simpler `Recursive` strategy?
+
+4.  The terms `Trainable Model Specification` and `Computable Model Specification` are used across both the glossary and the formal notation document, but the exact distinction is unclear. This ambiguity should be resolved to either use a single, consistent term or to explicitly define the difference between them.
+
+5.  The definition for `Sweep` includes the note "See also Johnny Lawrence." What is the context or inside joke behind this reference?
