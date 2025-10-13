@@ -22,7 +22,6 @@ The Python Coding Style Guide is a vital resource for our development team. It s
     - Use UPPERCASE for constants, e.g., `LEARNING_RATE`, `PATH`
     - Use descriptive names for functions and classes. If you have a hard time coming up with a descriptive name it might indicate that the function or class is doing too much or handling tasks that are too diverse at once.
 
-Certainly! Here's an entry on the use of capital and lowercase letters in script files:
 
 ### **Naming Script Files**
 

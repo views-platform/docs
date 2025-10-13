@@ -51,7 +51,7 @@ Link to any related issues or pull requests.
 - Consider how this issue might affect future development and document any potential impacts.
 
 ## **ADR Generation**
-- Consider whether resolving this issue necessitates the updating and/or the creation of one or more [ADRs](https://github.com/prio-data/views_pipeline/tree/github_issue_guide/documentation/ADRs) to ensure that the ADRs accurately represent the current codebase.
+- Consider whether resolving this issue necessitates the updating and/or the creation of one or more ADRs or ODRs to ensure that the ADRs accurately represent the current codebase.
 
 ## **Branch**
 - Work on a new branch named `issue_<issue_number>_<short_description>`.
