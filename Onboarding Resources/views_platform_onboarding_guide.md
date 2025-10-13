@@ -1,6 +1,10 @@
 # VIEWS Platform Onboarding Guide
 
+<<<<<<< HEAD
+Welcome to the Views Platform! This guide is designed to help you better understand the Views Platform including all its components and should enable you to utilize the available resources effectively. Before jumping right into model training and development, please take some time to study the information provided in this guide and familiarize yourself with our repository structure. 
+=======
 Welcome to the VIEWS Platform! This guide is designed to help you navigate our repositories and utilize the available resources effectively.
+>>>>>>> main
 
 ## 1. Overview of Repositories
 
@@ -18,7 +22,7 @@ The VIEWS Platform comprises several specialized repositories:
 
 - **[views-evaluation](https://github.com/views-platform/views-evaluation)**: Focuses on the evaluation metrics and analysis of model outputs.
 
-For more information on the individual contents of the repositories, please see the repository `README.md` files. 
+For more information on the individual contents of the repositories, please consult the respective repository `README.md` files. 
 
 ## 2. Getting Started
 
@@ -26,9 +30,13 @@ For more information on the individual contents of the repositories, please see 
 
 Begin by exploring the [docs](https://github.com/views-platform/docs) repository. This will provide you with an understanding of the organizational standards and decision records that guide our projects. Here you can also find the [Glossary](../FAQ%20&%20Glossary/glossary.md) containing all the relevant terminology for navigating through our material. Pay attention to the Organizational Decision Records (ODRs) to grasp the rationale behind key decisions in the organization. Look through the [Organizational Guides](../Organizational%20Guides/) to understand some of the guiding principles of the VIEWS project. You can also find the [Contribution Guides](/Contribution%20Guides/README.md) for details on how to make your first contribution. When making a contribution to the project, make sure to follow any relevant rules and structures which can be found in the [Templates](../Templates/) directory. 
 
-**Step 2: Set Up the Development Environment**
+**Step 2: Familiarize Yourself with the Modelling Setup**
 
+<<<<<<< HEAD
+In order to use the pipeline, it is technically not strictly necessary to understand how the predictions are made. However, it is highly recommended to at least develop an understanding of what is going on under the hood. In the last step, you already consulted the [Glossary](../FAQ%20&%20Glossary/glossary.md), which is a great starting point for this step. Begin by taking a look at the Modelling Process Documentation and familiarize yourself with the data partitioning, our modelling and our evaluation approach. 
+=======
 Once you are familiar with the key components of the documentation, clone the [views-pipeline-core](https://github.com/views-platform/views-pipeline-core) repository, as it contains the main pipeline for data processing and modeling. The [`README.md`](https://github.com/views-platform/views-pipeline-core/blob/main/README.md) file contains more detailed information on the views-pipeline-core components and how they interact with one another. You can find more detailed instructions on the technical setup of the pipeline in the [Internal Tech Guide](). 
+>>>>>>> main
 
 **Step 3: Explore Additional Repositories**
 
@@ -46,11 +54,34 @@ When you have completed the previous step, depending on your area of interest, d
 
 Ensure you read through the organization's Code of Conduct and Contributing Guidelines, found in the [`docs`](https://github.com/views-platform/docs) repo. This will help you understand the expectations and processes for contributing to the projects.
 
-**Step 5: Always consult the Glossary**
+
+**Step 5: Check Technical Requirements**
+
+Consult the [`README.md`](https://github.com/views-platform/views-pipeline-core/blob/main/README.md) file to make sure you have the appropriate setup. Currently, the Views Platform can only be executed on Mac or Linux machines. Make sure you are connected to the VPN (it is NOT enough to be at PRIO and connect to the network via Ethernet) and that your machine has enough RAM to run pipeline code.
+
+
+**Step 6: Set Up the Development Environment**
+
+There are multiple ways to set up your environment. All pipeline components/repositories can either be cloned using Git or installed locally using the pip package manager. Whichever method you chose, make sure to set up a virtual environment first using e.g. Anaconda and set the python version to 3.11. Proceed to clone the [views-pipeline-core](https://github.com/views-platform/views-pipeline-core) or install it locally. Depending on your usecase, clone other pipeline repositories that you need, e.g [views-models](https://github.com/views-platform/views-models). For further information on how to set up your development environment, consult the [`README.md`](https://github.com/views-platform/views-pipeline-core/blob/main/README.md) file. Ensure you have all necessary dependencies installed and understand the pipeline's structure. Once the environment is setup, you are ready to execute the Views pipeline.
+
+**Step 7: Execute Pipeline Code**
+
+At the moment it is possible to 
+
+- run an existing model/ensemble 
+- build a Views model scaffold
+- develop a new architectural package 
+
+The procedures are different for every use case. Consult the [`README.md`](https://github.com/views-models/main/README.md) file for step by step instructions. 
+
+
+**While Developing always make sure to ...**:
+
+**... Always consult the Glossary**
 
 Use the terms defined in the Glossary in your code and documentation. Consistent terminology helps avoid misunderstandings and makes the codebase easier to navigate.
 
-**Step 6: Revisit the ODRs if you encounter any uncertainties.** 
+**... Revisit the ODRs if you encounter any uncertainties.** 
 
 They are the authoritative source for understanding the crucial decisions made in the project. **This project runs on the philosophy of "if you can't answer it with a link, it is not documented."** As such, all decisions regarding the organization or pipeline architecture should be properly documented with an ODR.
 
